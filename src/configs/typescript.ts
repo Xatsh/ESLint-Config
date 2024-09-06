@@ -1,7 +1,7 @@
 import process from 'node:process'
 import { GLOB_ASTRO_TS, GLOB_TS, GLOB_TSX } from '@/constants'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsProjectType, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
-import { interopDefault, renameRules } from '@/utils'
+import { ensurePackages, interopDefault, renameRules } from '@/utils'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions & OptionsProjectType = {},
@@ -52,6 +52,11 @@ export async function typescript(
     'ts/switch-exhaustiveness-check': 'error',
     'ts/unbound-method': 'error',
   }
+
+  await ensurePackages([
+    '@typescript-eslint/eslint-plugin',
+    '@typescript-eslint/parser',
+  ])
 
   const [
     pluginTs,

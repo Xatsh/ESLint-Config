@@ -17,12 +17,6 @@ importers:
       '@stylistic/eslint-plugin':
         specifier: ^2.7.2
         version: 2.7.2(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^8.4.0
-        version: 8.4.0(@typescript-eslint/parser@8.4.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
-      '@typescript-eslint/parser':
-        specifier: ^8.4.0
-        version: 8.4.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
       eslint-config-flat-gitignore:
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.9.1(jiti@1.21.6))
@@ -72,6 +66,12 @@ importers:
       '@types/node':
         specifier: ^22.5.4
         version: 22.5.4
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^8.4.0
+        version: 8.4.0(@typescript-eslint/parser@8.4.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
+      '@typescript-eslint/parser':
+        specifier: ^8.4.0
+        version: 8.4.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)
       '@unocss/eslint-plugin':
         specifier: ^0.62.3
         version: 0.62.3(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)

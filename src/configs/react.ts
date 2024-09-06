@@ -29,6 +29,7 @@ export async function react(
     '@eslint-react/eslint-plugin',
     'eslint-plugin-react-hooks',
     'eslint-plugin-react-refresh',
+    '@typescript-eslint/parser',
   ])
 
   const tsconfigPath = options?.tsconfigPath

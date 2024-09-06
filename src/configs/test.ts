@@ -1,4 +1,4 @@
-import { interopDefault } from '@/utils'
+import { ensurePackages, interopDefault } from '@/utils'
 import type { OptionsFiles, OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '@/types'
 import { GLOB_TESTS } from '@/constants'
 
@@ -13,6 +13,11 @@ export async function test(
     isInEditor = false,
     overrides = {},
   } = options
+
+  await ensurePackages([
+    '@vitest/eslint-plugin',
+    'eslint-plugin-no-only-tests',
+  ])
 
   const [
     pluginVitest,

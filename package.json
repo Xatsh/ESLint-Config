@@ -29,6 +29,8 @@
   },
   "peerDependencies": {
     "@eslint-react/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
     "@unocss/eslint-plugin": "^0.62.3",
     "@vitest/eslint-plugin": "^1.1.0",
     "astro-eslint-parser": "^1.0.2",
@@ -53,6 +55,12 @@
   },
   "peerDependenciesMeta": {
     "@eslint-react/eslint-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/parser": {
       "optional": true
     },
     "@unocss/eslint-plugin": {
@@ -120,8 +128,6 @@
     "@antfu/install-pkg": "^0.4.1",
     "@clack/prompts": "^0.7.0",
     "@stylistic/eslint-plugin": "^2.7.2",
-    "@typescript-eslint/eslint-plugin": "^8.4.0",
-    "@typescript-eslint/parser": "^8.4.0",
     "eslint-config-flat-gitignore": "^0.3.0",
     "eslint-flat-config-utils": "^0.3.1",
     "eslint-merge-processors": "^0.1.0",
@@ -140,6 +146,8 @@
     "@eslint-react/eslint-plugin": "^1.13.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.5.4",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
     "@unocss/eslint-plugin": "^0.62.3",
     "@vitest/eslint-plugin": "^1.1.0",
     "astro-eslint-parser": "^1.0.2",

@@ -1,6 +1,6 @@
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_ASTRO } from '@/constants'
-import { interopDefault } from '@/utils'
+import { ensurePackages, interopDefault } from '@/utils'
 
 export async function astro(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -10,6 +10,12 @@ export async function astro(
     overrides = {},
     stylistic = true,
   } = options
+
+  await ensurePackages([
+    'eslint-plugin-astro',
+    'astro-eslint-parser',
+    '@typescript-eslint/parser',
+  ])
 
   const [
     pluginAstro,

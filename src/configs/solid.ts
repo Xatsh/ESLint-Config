@@ -13,6 +13,7 @@ export async function solid(
 
   await ensurePackages([
     'eslint-plugin-solid',
+    '@typescript-eslint/parser',
   ])
 
   const tsconfigPath = options?.tsconfigPath

@@ -1,6 +1,6 @@
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_YAML } from '@/constants'
-import { interopDefault } from '@/utils'
+import { ensurePackages, interopDefault } from '@/utils'
 
 export async function yaml(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -15,6 +15,11 @@ export async function yaml(
     indent = 2,
     quotes = 'single',
   } = typeof stylistic === 'boolean' ? {} : stylistic
+
+  await ensurePackages([
+    'eslint-plugin-yml',
+    'yaml-eslint-parser',
+  ])
 
   const [
     pluginYaml,

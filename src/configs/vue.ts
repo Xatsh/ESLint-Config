@@ -1,5 +1,5 @@
 import { mergeProcessors } from 'eslint-merge-processors'
-import { interopDefault } from '@/utils'
+import { ensurePackages, interopDefault } from '@/utils'
 import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, OptionsVue, TypedFlatConfigItem } from '@/types'
 import { GLOB_VUE } from '@/constants'
 
@@ -20,6 +20,12 @@ export async function vue(
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
+
+  await ensurePackages([
+    'eslint-plugin-vue',
+    'vue-eslint-parser',
+    'eslint-processor-vue-blocks',
+  ])
 
   const [
     pluginVue,

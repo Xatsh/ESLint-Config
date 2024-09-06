@@ -18,6 +18,7 @@ export async function svelte(
 
   await ensurePackages([
     'eslint-plugin-svelte',
+    'svelte-eslint-parser',
   ])
 
   const [
