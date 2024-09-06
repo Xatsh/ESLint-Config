@@ -68,7 +68,7 @@ export async function vue(
           },
           extraFileExtensions: ['.vue'],
           parser: options.typescript
-            ? await interopDefault(import('@typescript-eslint/parser')) as any
+            ? await interopDefault(import('@typescript-eslint/parser'))
             : null,
           sourceType: 'module',
         },
@@ -87,29 +87,26 @@ export async function vue(
           }),
         ]),
       rules: {
-        ...pluginVue.configs.base.rules as any,
+        ...pluginVue.configs.base.rules,
 
         ...vueVersion === 2
           ? {
-              ...pluginVue.configs.essential.rules as any,
-              ...pluginVue.configs['strongly-recommended'].rules as any,
-              ...pluginVue.configs.recommended.rules as any,
+              ...pluginVue.configs.essential.rules,
+              ...pluginVue.configs['strongly-recommended'].rules,
+              ...pluginVue.configs.recommended.rules,
             }
           : {
-              ...pluginVue.configs['vue3-essential'].rules as any,
-              ...pluginVue.configs['vue3-strongly-recommended'].rules as any,
-              ...pluginVue.configs['vue3-recommended'].rules as any,
+              ...pluginVue.configs['vue3-essential'].rules,
+              ...pluginVue.configs['vue3-strongly-recommended'].rules,
+              ...pluginVue.configs['vue3-recommended'].rules,
             },
 
         'node/prefer-global/process': 'off',
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
         }],
-
         'vue/component-name-in-template-casing': ['error', 'PascalCase'],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
-        // this is deprecated
-        'vue/component-tags-order': 'off',
         'vue/custom-event-name-casing': ['error', 'camelCase'],
         'vue/define-macros-order': ['error', {
           order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'],
