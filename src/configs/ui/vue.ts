@@ -12,7 +12,6 @@ export async function vue(
     files = [GLOB_VUE],
     overrides = {},
     stylistic = true,
-    vueVersion = 3,
   } = options
 
   const sfcBlocks = options.sfcBlocks === true
@@ -80,19 +79,10 @@ export async function vue(
         ]),
       rules: {
         ...pluginVue.configs.base.rules,
-
-        ...vueVersion === 2
-          ? {
-              ...pluginVue.configs.essential.rules,
-              ...pluginVue.configs['strongly-recommended'].rules,
-              ...pluginVue.configs.recommended.rules,
-            }
-          : {
-              ...pluginVue.configs['vue3-essential'].rules,
-              ...pluginVue.configs['vue3-strongly-recommended'].rules,
-              ...pluginVue.configs['vue3-recommended'].rules,
-            },
-
+        ...pluginVue.configs['vue3-essential'].rules,
+        ...pluginVue.configs['vue3-strongly-recommended'].rules,
+        ...pluginVue.configs['vue3-recommended'].rules,
+        'vue/component-tags-order': 'off',
         'node/prefer-global/process': 'off',
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
