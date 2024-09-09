@@ -118,7 +118,6 @@ export async function typescript(
           disallowTypeAnnotations: false,
           prefer: 'type-imports',
         }],
-
         'ts/method-signature-style': ['error', 'property'], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         'ts/no-dupe-class-members': 'error',
         'ts/no-dynamic-delete': 'off',
