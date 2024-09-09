@@ -7422,6 +7422,8 @@ type _PerfectionistSortImportsSortImports = (_PerfectionistSortImportsMaxLineLen
   
   internalPattern?: string[]
   
+  sortSideEffects?: boolean
+  
   newlinesBetween?: ("ignore" | "always" | "never")
   
   maxLineLength?: number
@@ -11930,4 +11932,4 @@ type YamlSpacedComment = []|[("always" | "never")]|[("always" | "never"), {
   markers?: string[]
 }]
 // Names of all the configs
-export type ConfigNames = 'xat/astro/setup' | 'xat/astro/rules' | 'xat/imports/rules' | 'xat/javascript/setup' | 'xat/javascript/rules' | 'xat/jsx/setup' | 'xat/jsdoc/rules' | 'xat/jsonc/setup' | 'xat/jsonc/rules' | 'xat/node/rules' | 'xat/perfectionist/setup' | 'xat/react/setup' | 'xat/react/rules' | 'xat/solid/setup' | 'xat/solid/rules' | 'xat/sort/package-json' | 'xat/stylistic/rules' | 'xat/svelte/setup' | 'xat/svelte/rules' | 'xat/test/setup' | 'xat/test/rules' | 'xat/toml/setup' | 'xat/toml/rules' | 'xat/regexp/rules' | 'xat/typescript/setup' | 'xat/typescript/parser' | 'xat/typescript/rules' | 'xat/unicorn/rules' | 'xat/unocss' | 'xat/vue/setup' | 'xat/vue/rules' | 'xat/yaml/setup' | 'xat/yaml/rules'
+export type ConfigNames = 'xat/astro/setup' | 'xat/astro/rules' | 'xat/imports/rules' | 'xat/javascript/setup' | 'xat/javascript/rules' | 'xat/jsx/setup' | 'xat/jsdoc/rules' | 'xat/jsonc/setup' | 'xat/jsonc/rules' | 'xat/node/rules' | 'xat/perfectionist/setup' | 'xat/react/setup' | 'xat/react/rules' | 'xat/solid/setup' | 'xat/solid/rules' | 'xat/sort/package-json' | 'xat/stylistic/rules' | 'xat/svelte/setup' | 'xat/svelte/rules' | 'xat/tailwindcss/rules' | 'xat/test/setup' | 'xat/test/rules' | 'xat/toml/setup' | 'xat/toml/rules' | 'xat/regexp/rules' | 'xat/typescript/setup' | 'xat/typescript/parser' | 'xat/typescript/rules' | 'xat/unicorn/rules' | 'xat/unocss' | 'xat/vue/setup' | 'xat/vue/rules' | 'xat/yaml/setup' | 'xat/yaml/rules'
