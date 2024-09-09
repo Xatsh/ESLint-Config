@@ -227,13 +227,8 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   /**
    * Enable ASTRO support.
    *
-   * Requires installing:
-   * - `eslint-plugin-astro`
    *
-   * Requires installing for formatting .astro:
-   * - `prettier-plugin-astro`
-   *
-   * @default false
+   * @default auto-detect based on the dependencies
    */
   astro?: boolean | OptionsOverrides
 
@@ -264,41 +259,27 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   /**
    * Enable react rules.
    *
-   * Requires installing:
-   * - `@eslint-react/eslint-plugin`
-   * - `eslint-plugin-react-hooks`
-   * - `eslint-plugin-react-refresh`
-   *
-   * @default false
+   * @default auto-detect based on the dependencies
    */
   react?: boolean | OptionsOverrides
   /**
    * Enable solid rules.
    *
-   * Requires installing:
-   * - `eslint-plugin-solid`
-   *
-   * @default false
+   * @default auto-detect based on the dependencies
    */
   solid?: boolean | OptionsOverrides
 
   /**
    * Enable svelte rules.
    *
-   * Requires installing:
-   * - `eslint-plugin-svelte`
-   *
-   * @default false
+   * @default auto-detect based on the dependencies
    */
   svelte?: boolean
 
   /**
    * Enable unocss rules.
    *
-   * Requires installing:
-   * - `@unocss/eslint-plugin`
-   *
-   * @default false
+   * @default auto-detect based on the dependencies
    */
   unocss?: boolean | OptionsUnoCSS
 
