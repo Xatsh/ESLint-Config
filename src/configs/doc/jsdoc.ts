@@ -1,20 +1,10 @@
-import { ensurePackages, interopDefault } from '@/utils'
+import { pluginJsdoc } from '@/plugins'
 import type { OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
   const {
     stylistic = true,
   } = options
-
-  await ensurePackages([
-    'eslint-plugin-jsdoc',
-  ])
-
-  const [pluginJsdoc] = await Promise.all([
-    interopDefault(
-      import('eslint-plugin-jsdoc'),
-    ),
-  ] as const)
 
   return [
     {

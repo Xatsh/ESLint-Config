@@ -1,10 +1,7 @@
-import { isPackageExists } from 'local-pkg'
-import { FlatConfigComposer } from 'eslint-flat-config-utils'
-import type { Linter } from 'eslint'
 import {
   astro,
-  disables,
-  ignores,
+  disable,
+  ignore,
   imports,
   javascript,
   jsdoc,
@@ -19,6 +16,7 @@ import {
   sortTsconfig,
   stylistic,
   svelte,
+  tailwindcss,
   test,
   toml,
   typescript,
@@ -26,8 +24,11 @@ import {
   unocss,
   vue,
   yaml } from '@/configs'
-import type { Awaitable, ConfigNames, OptionsConfig, Rules, TypedFlatConfigItem } from '@/types'
 import { interopDefault, isInEditor } from '@/utils'
+import { FlatConfigComposer } from 'eslint-flat-config-utils'
+import { isPackageExists } from 'local-pkg'
+import type { Awaitable, ConfigNames, OptionsConfig, Rules, TypedFlatConfigItem } from '@/types'
+import type { Linter } from 'eslint'
 
 const flatConfigProps = [
   'name',
@@ -88,6 +89,7 @@ export function xat(
     unicorn: enableUnicorn = true,
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
+    tailwindcss: enableTailwindCSS = isPackageExists('tailwindcss'),
   } = options
 
   let isEditor = options.isInEditor
@@ -129,7 +131,7 @@ export function xat(
 
   // Base configs
   configs.push(
-    ignores(options.ignores),
+    ignore(options.ignores),
     javascript({
       isInEditor: isEditor,
       overrides: getOverrides(options, 'javascript'),
@@ -169,6 +171,12 @@ export function xat(
     configs.push(stylistic({
       ...stylisticOptions,
       overrides: getOverrides(options, 'stylistic'),
+    }))
+  }
+
+  if (enableTailwindCSS) {
+    configs.push(tailwindcss({
+      overrides: getOverrides(options, 'tailwindcss'),
     }))
   }
 
@@ -255,7 +263,7 @@ export function xat(
   }
 
   configs.push(
-    disables(),
+    disable(),
   )
 
   if ('files' in options) {

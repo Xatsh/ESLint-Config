@@ -1,7 +1,8 @@
 import process from 'node:process'
 import { GLOB_ASTRO_TS, GLOB_TS, GLOB_TSX } from '@/constants'
+import { parserTs, pluginTs } from '@/plugins'
+import { renameRules } from '@/utils'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsProjectType, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
-import { ensurePackages, interopDefault, renameRules } from '@/utils'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions & OptionsProjectType = {},
@@ -52,19 +53,6 @@ export async function typescript(
     'ts/switch-exhaustiveness-check': 'error',
     'ts/unbound-method': 'error',
   }
-
-  await ensurePackages([
-    '@typescript-eslint/eslint-plugin',
-    '@typescript-eslint/parser',
-  ])
-
-  const [
-    pluginTs,
-    parserTs,
-  ] = await Promise.all([
-    interopDefault(import('@typescript-eslint/eslint-plugin')),
-    interopDefault(import('@typescript-eslint/parser')),
-  ] as const)
 
   function makeParser(typeAware: boolean, files: string[], ignores?: string[]): TypedFlatConfigItem {
     return {

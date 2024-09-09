@@ -1,5 +1,5 @@
-import type { TypedFlatConfigItem } from '@/types'
 import { GLOB_JSX, GLOB_TSX } from '@/constants'
+import type { TypedFlatConfigItem } from '@/types'
 
 export async function jsx(): Promise<TypedFlatConfigItem[]> {
   return [

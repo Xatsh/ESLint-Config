@@ -1,6 +1,7 @@
-import { ensurePackages, interopDefault } from '@/utils'
-import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_SVELTE } from '@/constants'
+import { parserSvelte, pluginSvelte } from '@/plugins'
+import { interopDefault } from '@/utils'
+import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 export async function svelte(
   options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -16,19 +17,6 @@ export async function svelte(
     quotes = 'single',
   } = typeof stylistic === 'boolean' ? {} : stylistic
 
-  await ensurePackages([
-    'eslint-plugin-svelte',
-    'svelte-eslint-parser',
-  ])
-
-  const [
-    pluginSvelte,
-    parserSvelte,
-  ] = await Promise.all([
-    interopDefault(import('eslint-plugin-svelte')),
-    interopDefault(import('svelte-eslint-parser')),
-  ] as const)
-
   return [
     {
       name: 'xat/svelte/setup',
@@ -43,7 +31,7 @@ export async function svelte(
         parserOptions: {
           extraFileExtensions: ['.svelte'],
           parser: options.typescript
-            ? await interopDefault(import('@typescript-eslint/parser')) as any
+            ? await interopDefault(import('@typescript-eslint/parser'))
             : null,
         },
       },

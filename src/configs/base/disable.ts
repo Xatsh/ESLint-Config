@@ -1,11 +1,11 @@
 import { GLOB_SRC, GLOB_SRC_EXT } from '@/constants'
 import type { TypedFlatConfigItem } from '@/types'
 
-export async function disables(): Promise<TypedFlatConfigItem[]> {
+export async function disable(): Promise<TypedFlatConfigItem[]> {
   return [
     {
       files: [`scripts/${GLOB_SRC}`],
-      name: 'xat/disables/scripts',
+      name: 'xat/disable/scripts',
       rules: {
         'no-console': 'off',
         'ts/explicit-function-return-type': 'off',
@@ -14,14 +14,14 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
     },
     {
       files: [`cli/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-      name: 'xat/disables/cli',
+      name: 'xat/disable/cli',
       rules: {
         'no-console': 'off',
       },
     },
     {
       files: ['**/*.d.?([cm])ts'],
-      name: 'xat/disables/dts',
+      name: 'xat/disable/dts',
       rules: {
         'eslint-comments/no-unlimited-disable': 'off',
         'import/no-duplicates': 'off',
@@ -31,14 +31,14 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
     },
     {
       files: ['**/*.{test,spec}.([tj])s?(x)'],
-      name: 'xat/disables/test',
+      name: 'xat/disable/test',
       rules: {
         'no-unused-expressions': 'off',
       },
     },
     {
       files: ['**/*.js', '**/*.cjs'],
-      name: 'xat/disables/cjs',
+      name: 'xat/disable/cjs',
       rules: {
         'ts/no-require-imports': 'off',
       },

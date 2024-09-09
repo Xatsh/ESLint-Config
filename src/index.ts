@@ -1,8 +1,8 @@
 import { xat } from './factory'
 
 export * from './configs'
-export * from './factory'
 export * from './constants'
+export * from './factory'
 export * from './types'
 export * from './utils'
 

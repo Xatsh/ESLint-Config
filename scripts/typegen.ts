@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
-import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 import { astro, imports, javascript, jsdoc, jsonc, jsx, node, perfectionist, react, regexp, solid, sortPackageJson, stylistic, svelte, test, toml, typescript, unicorn, unocss, vue, yaml } from '@/configs'
 import { combine } from '@/utils'
+import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 
 const configs = await combine(
   astro(),

@@ -1,6 +1,6 @@
-import { ensurePackages, interopDefault } from '@/utils'
-import type { OptionsFiles, OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '@/types'
 import { GLOB_TESTS } from '@/constants'
+import { pluginNoOnlyTests, pluginVitest } from '@/plugins'
+import type { OptionsFiles, OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '@/types'
 
 // Hold the reference so we don't redeclare the plugin on each call
 let _pluginTest: any
@@ -13,19 +13,6 @@ export async function test(
     isInEditor = false,
     overrides = {},
   } = options
-
-  await ensurePackages([
-    '@vitest/eslint-plugin',
-    'eslint-plugin-no-only-tests',
-  ])
-
-  const [
-    pluginVitest,
-    pluginNoOnlyTests,
-  ] = await Promise.all([
-    interopDefault(import('@vitest/eslint-plugin')),
-    interopDefault(import('eslint-plugin-no-only-tests')),
-  ] as const)
 
   _pluginTest = _pluginTest || {
     ...pluginVitest,

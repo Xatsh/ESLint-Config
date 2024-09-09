@@ -1,7 +1,8 @@
-import { isPackageExists } from 'local-pkg'
-import { ensurePackages, interopDefault, toArray } from '@/utils'
-import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
 import { GLOB_SRC } from '@/constants'
+import { parserTs, pluginReact, pluginReactHooks, pluginReactRefresh } from '@/plugins'
+import { toArray } from '@/utils'
+import { isPackageExists } from 'local-pkg'
+import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
 
 // react refresh
 const ReactRefreshAllowConstantExportPackages = [
@@ -25,29 +26,10 @@ export async function react(
     overrides = {},
   } = options
 
-  await ensurePackages([
-    '@eslint-react/eslint-plugin',
-    'eslint-plugin-react-hooks',
-    'eslint-plugin-react-refresh',
-    '@typescript-eslint/parser',
-  ])
-
   const tsconfigPath = options?.tsconfigPath
     ? toArray(options.tsconfigPath)
     : undefined
   const isTypeAware = !!tsconfigPath
-
-  const [
-    pluginReact,
-    pluginReactHooks,
-    pluginReactRefresh,
-    parserTs,
-  ] = await Promise.all([
-    interopDefault(import('@eslint-react/eslint-plugin')),
-    interopDefault(import('eslint-plugin-react-hooks')),
-    interopDefault(import('eslint-plugin-react-refresh')),
-    interopDefault(import('@typescript-eslint/parser')),
-  ] as const)
 
   const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(i => isPackageExists(i))
   const isUsingRemix = RemixPackages.some(i => isPackageExists(i))

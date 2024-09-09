@@ -1,6 +1,6 @@
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '@/constants'
-import { ensurePackages, interopDefault } from '@/utils'
+import { parserJsonc, pluginJsonc } from '@/plugins'
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 export async function jsonc(
   options: OptionsFiles & OptionsStylistic & OptionsOverrides = {},
@@ -14,19 +14,6 @@ export async function jsonc(
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
-
-  await ensurePackages([
-    'eslint-plugin-jsonc',
-    'jsonc-eslint-parser',
-  ])
-
-  const [
-    pluginJsonc,
-    parserJsonc,
-  ] = await Promise.all([
-    interopDefault(import('eslint-plugin-jsonc')),
-    interopDefault(import('jsonc-eslint-parser')),
-  ] as const)
 
   return [
     {

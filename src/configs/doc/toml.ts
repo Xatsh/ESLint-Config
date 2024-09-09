@@ -1,6 +1,6 @@
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_TOML } from '@/constants'
-import { ensurePackages, interopDefault } from '@/utils'
+import { parserToml, pluginToml } from '@/plugins'
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 export async function toml(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -14,19 +14,6 @@ export async function toml(
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
-
-  await ensurePackages([
-    'eslint-plugin-toml',
-    'toml-eslint-parser',
-  ])
-
-  const [
-    pluginToml,
-    parserToml,
-  ] = await Promise.all([
-    interopDefault(import('eslint-plugin-toml')),
-    interopDefault(import('toml-eslint-parser')),
-  ] as const)
 
   return [
     {

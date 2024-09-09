@@ -1,7 +1,9 @@
-import { mergeProcessors } from 'eslint-merge-processors'
-import { ensurePackages, interopDefault } from '@/utils'
-import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, OptionsVue, TypedFlatConfigItem } from '@/types'
 import { GLOB_VUE } from '@/constants'
+import { parserVue, pluginVue } from '@/plugins'
+import { interopDefault } from '@/utils'
+import { mergeProcessors } from 'eslint-merge-processors'
+import processorVueBlocks from 'eslint-processor-vue-blocks'
+import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, OptionsVue, TypedFlatConfigItem } from '@/types'
 
 export async function vue(
   options: OptionsVue & OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -20,22 +22,6 @@ export async function vue(
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
-
-  await ensurePackages([
-    'eslint-plugin-vue',
-    'vue-eslint-parser',
-    'eslint-processor-vue-blocks',
-  ])
-
-  const [
-    pluginVue,
-    parserVue,
-    processorVueBlocks,
-  ] = await Promise.all([
-    interopDefault(import('eslint-plugin-vue')),
-    interopDefault(import('vue-eslint-parser')),
-    interopDefault(import('eslint-processor-vue-blocks')),
-  ] as const)
 
   return [
     {
