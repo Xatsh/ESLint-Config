@@ -23,6 +23,8 @@
   "scripts": {
     "dev": "nlx @eslint/config-inspector --config eslint.config.js",
     "prepare": "pnpm lefthook install",
+    "prepack": "nr build",
+    "release": "bumpp && pnpm publish",
     "build": "nr typegen && tsup --format esm,cjs --clean --dts",
     "typegen": "tsx scripts/typegen.ts",
     "typecheck": "tsc --noEmit",
@@ -75,6 +77,7 @@
   "devDependencies": {
     "@antfu/ni": "^0.23.0",
     "@types/node": "^22.5.4",
+    "bumpp": "^9.5.2",
     "eslint": "^9.10.0",
     "lefthook": "^1.7.15",
     "svelte": "^4.2.19",
