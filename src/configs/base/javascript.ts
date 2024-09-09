@@ -16,7 +16,7 @@ export async function javascript(
         ecmaVersion: 2022,
         globals: {
           ...globals.browser,
-          ...globals.es2021,
+          ...globals.es2022,
           ...globals.node,
           document: 'readonly',
           navigator: 'readonly',
@@ -43,7 +43,6 @@ export async function javascript(
       },
       rules: {
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
-
         'array-callback-return': 'error',
         'block-scoped-var': 'error',
         'constructor-super': 'error',
