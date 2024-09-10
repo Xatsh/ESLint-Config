@@ -7980,6 +7980,7 @@ type StyleIndent = []|[("tab" | number)]|[("tab" | number), {
   offsetTernaryExpressions?: boolean
   ignoredNodes?: string[]
   ignoreComments?: boolean
+  tabLength?: number
 }]
 // ----- style/indent-binary-ops -----
 type StyleIndentBinaryOps = []|[(number | "tab")]
@@ -8351,6 +8352,10 @@ type StyleKeywordSpacing = []|[{
       after?: boolean
     }
     return?: {
+      before?: boolean
+      after?: boolean
+    }
+    satisfies?: {
       before?: boolean
       after?: boolean
     }
@@ -8834,7 +8839,6 @@ type StyleTypeAnnotationSpacing = []|[{
     parameter?: _StyleTypeAnnotationSpacing_SpacingConfig
     property?: _StyleTypeAnnotationSpacing_SpacingConfig
     returnType?: _StyleTypeAnnotationSpacing_SpacingConfig
-    operator?: _StyleTypeAnnotationSpacing_SpacingConfig
   }
 }]
 interface _StyleTypeAnnotationSpacing_SpacingConfig {
@@ -11020,6 +11024,10 @@ type VueKeywordSpacing = []|[{
       after?: boolean
     }
     return?: {
+      before?: boolean
+      after?: boolean
+    }
+    satisfies?: {
       before?: boolean
       after?: boolean
     }
