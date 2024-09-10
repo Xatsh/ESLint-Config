@@ -1,7 +1,7 @@
 # @xats/eslint-config
 
 [![npm](https://img.shields.io/npm/v/@xats/eslint-config?color=444&label=)](https://npmjs.com/package/@xats/eslint-config)
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+![code style](https://antfu.me/badge-code-style.svg)
 
 
 > Base on [Antfu's ESLint config preset](https://github.com/antfu/eslint-config)
@@ -10,9 +10,14 @@
 
 All in One ESLint config.
 
+![My Skills](https://skillicons.dev/icons?i=js,ts,react,vue,astro,solidjs,svelte,tailwind&perline=8)
+
+## Features
+
 - Auto fix for formatting (**without** Prettier)
 - [Auto detect](#auto-detect) your codebase and enable needed rules
-- Work with React, Vue, Svelte, Solid, Astro.
+- Out of box level's support `toml`, `yaml`, `json`
+- Work with **React, Vue 3, Svelte, Solid, Astro**
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Respects `.gitignore` by default
@@ -22,22 +27,15 @@ All in One ESLint config.
 
 1. Install by your package manager
 
-npm
 ```shell
 npm install -D eslint @xats/eslint-config
 ```
-
-pnpm:
 ```shell
 pnpm add -D eslint @xats/eslint-config
 ```
-
-yarn:
 ```shell
 yarn add -D eslint @xats/eslint-config
 ```
-
-bun:
 ```shell
 bun add -D eslint @xats/eslint-config
 ```
@@ -45,7 +43,8 @@ bun add -D eslint @xats/eslint-config
 2. Create a `eslint.config.js` if your package.json set `"type": "module"`, otherwise create a `eslint.config.mjs`
 
 ```js
-// eslint.config.js or eslint.config.mjs
+// eslint.config.js 
+// or eslint.config.mjs
 
 import { xat } from '@xats/eslint-config'
 
@@ -129,25 +128,94 @@ See `package.json`'s [dependencies list](https://github.com/Xats-Lab/eslint-conf
 
 ## Auto-detect
 
-This config will look up your `package.json`, and auto enable blow config rules
+This config will look up your `package.json`, and auto enable related config rules
 
 ### UI
 
-- Astro: `astro` dependency
-- React: `react` dependency
+- Astro: `astro`
+- React: `react`
 - Vue: one of `vue`, `nuxt`, `vitepress`, `@slidev/cli`
-- Svelte: `svelte` dependency
-- SolidJS: `solid` dependency
+- Svelte: `svelte`
+- SolidJS: `solid`
 
 ### Style
 
-- UnoCSS: `unocss` dependency
-- TailwindCSS: `tailwindcss` dependency
+- UnoCSS: `unocss`
+- TailwindCSS: `tailwindcss`
 
 ### Devtool
 
-- TypeScript: `typescript` dependency
+- TypeScript: `typescript`
 
+## All Plugins
+
+⚡️: Auto detect
+
+👍🏻: Enabled default
+
+🔧: Default disabled, need turn on manually.
+
+<details>
+
+<summary>
+That's all plugins and its status
+</summary>
+
+### Base - you can **not** disable this configs, but you can still disable individual rule
+
+- [eslint-plugin-n](https://www.npmjs.com/package/eslint-plugin-n)
+- [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
+- [eslint-plugin-import-x]( https://www.npmjs.com/package/eslint-plugin-import-x)
+- [eslint-plugin-unused-imports](https://www.npmjs.com/package/eslint-plugin-unused-imports)
+- [eslint-plugin-perfectionist](https://www.npmjs.com/package/eslint-plugin-perfectionist)
+- [eslint-config-flat-gitignore](https://www.npmjs.com/package/eslint-config-flat-gitignore)
+
+### Astro
+
+- [eslint-plugin-astro](https://www.npmjs.com/package/eslint-plugin-astro) - ⚡️
+
+### React
+
+- [@eslint-react/eslint-plugin](https://npmjs.com/package/@eslint-react/eslint-plugin) - ⚡️
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) - ⚡️
+- [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh) - ⚡️
+
+### Svelte
+
+- [eslint-plugin-svelte](https://www.npmjs.com/package/eslint-plugin-svelte) - ⚡️
+
+### SolidJS
+
+- [eslint-plugin-solid](https://www.npmjs.com/package/eslint-plugin-solid) - ⚡️
+
+### Vue
+
+- [eslint-plugin-vue](https://npmjs.org/package/eslint-plugin-vue) - ⚡️
+
+### Style
+
+- [eslint-plugin-tailwindcss](https://www.npmjs.com/package/eslint-plugin-tailwindcss) - ⚡️
+- [@unocss/eslint-plugin](https://www.npmjs.com/package/@unocss/eslint-plugin) - ⚡️
+
+### Devtools
+
+- [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - ⚡️
+- [eslint-plugin-no-only-tests](https://www.npmjs.com/package/eslint-plugin-no-only-tests) - 🔧 `test`
+- [@vitest/eslint-plugin](https://www.npmjs.com/package/@vitest/eslint-plugin) - 🔧 `test`
+
+### Document
+
+- [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc) - 👍🏻 `jsonc`
+- [eslint-plugin-toml](https://www.npmjs.com/package/eslint-plugin-toml) - 👍🏻 `toml`
+- [eslint-plugin-yml](https://www.npmjs.com/package/eslint-plugin-yml) - 👍🏻 `yaml`
+
+### Miscs
+
+- [@stylistic/eslint-plugin](https://www.npmjs.com/package/@stylistic/eslint-plugin) - 👍🏻 `stylistic`
+- [eslint-plugin-regexp](https://www.npmjs.com/package/eslint-plugin-regexp) - 👍🏻 `regexp`
+- [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)  - 👍🏻 `unicorn`
+
+</details>
 
 ## Customization
 
@@ -162,7 +230,7 @@ import { xat } from '@xats/eslint-config'
 export default xat()
 ```
 
-And that's it! Or you can configure each integration individually, for example:
+And that's it! Or you can configure each integration individually, this is an all options example:
 
 ```js
 // eslint.config.js
@@ -170,6 +238,7 @@ import { xat } from '@xats/eslint-config'
 
 export default xat({
   // Type of the project.
+  // set to 'lib' will enable stricter rules
   // @default: 'app'
   type: 'lib', // 'app' | 'lib'
   
@@ -184,10 +253,18 @@ export default xat({
   // Disable some items
   jsonc: false,
   yaml: false,
+  toml: false,
+  unicorn: false,
   
   // You can also disable some autodetected configs
   react: false,
-  vue: false
+  astro: false,
+  vue: false,
+  solid: false,
+  svelte: false,
+  typescript: false,
+  tailwind: false,
+  unocss: false,
 
   // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
   ignores: [
@@ -261,115 +338,7 @@ Yep, you can also make this to your personal config preset.
 
 Check out the [configs](https://github.com/Xats-Lab/eslint-config/blob/main/src/configs) and [factory](https://github.com/Xats-Lab/eslint-config/blob/main/src/factory.ts) for more details.
 
-> Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
-
-### Plugins Renaming
-
-Since flat config requires us to explicitly provide the plugin names (instead of the mandatory convention from npm package name), we renamed some plugins to make the overall scope more consistent and easier to write.
-
-| New Prefix | Original Prefix        | Source Plugin                                                                              |
-| ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
-| `import/*` | `import-x/*`           | [eslint-plugin-import-x](https://github.com/un-es/eslint-plugin-import-x)                  |
-| `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
-| `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
-| `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
-| `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
-| `test/*`   | `vitest/*`             | [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest)                |
-| `test/*`   | `no-only-tests/*`      | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests)  |
-
-When you want to override rules, or disable them inline, you need to update to the new prefix:
-
-```diff
--// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-+// eslint-disable-next-line ts/consistent-type-definitions
-type foo = { bar: 2 }
-```
-
-> [!NOTE]
-> About plugin renaming - it is actually rather a dangrous move that might leading to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
->
-> This config cares more about the user-facings DX, and try to ease out the implementation details. For example, users could keep using the semantic `import/order` without ever knowing the underlying plugin has migrated twice to `eslint-plugin-i` and then to `eslint-plugin-import-x`. User are also not forced to migrate to the implicit `i/order` halfway only because we swapped the implementation to a fork.
->
-> That said, it's probably still not a good idea. You might not want to doing this if you are maintaining your own eslint config.
->
-> Feel free to open issues if you want to combine this config with some other config presets but faced naming collisions. I am happy to figure out a way to make them work. But at this moment I have no plan to revert the renaming.
-
-This preset will automatically rename the plugins also for your custom configs. You can use the original prefix to override the rules directly.
-
-<details>
-<summary>Change back to original prefix</summary>
-
-If you really want to use the original prefix, you can revert the plugin renaming by:
-
-```ts
-import { xat } from '@xats/eslint-config'
-
-export default xat()
-  .renamePlugins({
-    ts: '@typescript-eslint',
-    yaml: 'yml',
-    node: 'n'
-    // ...
-  })
-```
-
-</details>
-
-### Rules Overrides
-
-We provided the `overrides` options in each integration:
-
-```js
-// eslint.config.js
-import { xat } from '@xat/eslint-config'
-
-export default xat({
-  vue: {
-    overrides: {
-      'vue/operator-linebreak': ['error', 'before'],
-    },
-  },
-  typescript: {
-    overrides: {
-      'ts/consistent-type-definitions': ['error', 'interface'],
-    },
-  },
-  yaml: {
-    overrides: {
-      // ...
-    },
-  },
-})
-```
-
-### Config Composer
-
-The factory function `xat()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
-
-```js
-// eslint.config.js
-import { xat } from '@xats/eslint-config'
-
-export default xat()
-  .prepend(
-    // some configs before the main config
-  )
-  // overrides any named configs
-  .override(
-    'xats/imports',
-    {
-      rules: {
-        'import/order': ['error', { 'newlines-between': 'always' }],
-      }
-    }
-  )
-  // rename plugin prefixes
-  .renamePlugins({
-    'old-prefix': 'new-prefix',
-    // ...
-  })
-// ...
-```
+By the way, this config is based on `@antfu/eslint-config@3.5.0`, So you can reference it's [Customization section](https://github.com/antfu/eslint-config/tree/v3.5.0#Customization).
 
 ## License
 
