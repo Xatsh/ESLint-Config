@@ -1,4 +1,5 @@
 import type { OptionsOverrides, OptionsRegExp, TypedFlatConfigItem } from '@/types'
+
 import { pluginRegex } from '@/plugins'
 
 export async function regexp(

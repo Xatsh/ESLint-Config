@@ -21,6 +21,7 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
         'jsonc/sort-keys': [
           'error',
           {
+            pathPattern: '^$',
             order: [
               'publisher',
               'name',
@@ -67,7 +68,6 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
               'lint-staged',
               'eslintConfig',
             ],
-            pathPattern: '^$',
           },
           {
             order: { type: 'asc' },
@@ -78,15 +78,16 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
             pathPattern: '^(?:resolutions|overrides|pnpm.overrides)$',
           },
           {
+            pathPattern: '^exports.*$',
             order: [
               'types',
               'import',
               'require',
               'default',
             ],
-            pathPattern: '^exports.*$',
           },
           {
+            pathPattern: '^(?:gitHooks|husky|simple-git-hooks)$',
             order: [
               // client hooks only
               'pre-commit',
@@ -100,7 +101,6 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
               'pre-push',
               'pre-auto-gc',
             ],
-            pathPattern: '^(?:gitHooks|husky|simple-git-hooks)$',
           },
         ],
       },
@@ -116,12 +116,13 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
 export function sortTsconfig(): TypedFlatConfigItem[] {
   return [
     {
-      files: ['**/tsconfig.json', '**/tsconfig.*.json'],
       name: 'xat/sort/tsconfig-json',
+      files: ['**/tsconfig.json', '**/tsconfig.*.json'],
       rules: {
         'jsonc/sort-keys': [
           'error',
           {
+            pathPattern: '^$',
             order: [
               'extends',
               'compilerOptions',
@@ -130,9 +131,9 @@ export function sortTsconfig(): TypedFlatConfigItem[] {
               'include',
               'exclude',
             ],
-            pathPattern: '^$',
           },
           {
+            pathPattern: '^compilerOptions$',
             order: [
               /* Projects */
               'incremental',
@@ -232,7 +233,6 @@ export function sortTsconfig(): TypedFlatConfigItem[] {
               'skipDefaultLibCheck',
               'skipLibCheck',
             ],
-            pathPattern: '^compilerOptions$',
           },
         ],
       },

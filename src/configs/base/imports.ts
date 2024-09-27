@@ -1,4 +1,5 @@
 import type { OptionsStylistic, TypedFlatConfigItem } from '@/types'
+
 import { pluginImport } from '@/plugins'
 
 export async function imports(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
@@ -15,9 +16,9 @@ export async function imports(options: OptionsStylistic = {}): Promise<TypedFlat
       rules: {
         'import/first': 'error',
         'import/no-duplicates': 'error',
-        'import/no-mutable-exports': 'error',
-        'import/no-named-default': 'error',
         'import/no-self-import': 'error',
+        'import/no-named-default': 'error',
+        'import/no-mutable-exports': 'error',
         'import/no-webpack-loader-syntax': 'error',
 
         ...stylistic

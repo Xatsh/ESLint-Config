@@ -1,12 +1,13 @@
 import type { OptionsUnoCSS, TypedFlatConfigItem } from '@/types'
+
 import { pluginUnoCSS } from '@/plugins'
 
 export async function unocss(
   options: OptionsUnoCSS = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
-    attributify = true,
     strict = false,
+    attributify = true,
   } = options
 
   return [

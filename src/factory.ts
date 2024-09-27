@@ -1,5 +1,10 @@
-import type { Awaitable, ConfigNames, OptionsConfig, Rules, TypedFlatConfigItem } from '@/types'
 import type { Linter } from 'eslint'
+
+import type { Awaitable, ConfigNames, OptionsConfig, Rules, TypedFlatConfigItem } from '@/types'
+
+import { FlatConfigComposer } from 'eslint-flat-config-utils'
+import { isPackageExists } from 'local-pkg'
+
 import {
   astro,
   disable,
@@ -23,8 +28,6 @@ import {
   unocss,
   yaml } from '@/configs'
 import { interopDefault, isInEditor } from '@/utils'
-import { FlatConfigComposer } from 'eslint-flat-config-utils'
-import { isPackageExists } from 'local-pkg'
 
 const flatConfigProps = [
   'name',
@@ -37,16 +40,16 @@ const flatConfigProps = [
 ] satisfies (keyof TypedFlatConfigItem)[]
 
 export const defaultPluginRenaming = {
+  'n': 'node',
+  'yml': 'yaml',
+  'import-x': 'import',
+  '@stylistic': 'style',
+
   '@eslint-react': 'react',
+  '@typescript-eslint': 'ts',
   '@eslint-react/dom': 'react-dom',
   '@eslint-react/hooks-extra': 'react-hooks-extra',
   '@eslint-react/naming-convention': 'react-naming-convention',
-
-  '@stylistic': 'style',
-  '@typescript-eslint': 'ts',
-  'import-x': 'import',
-  'n': 'node',
-  'yml': 'yaml',
 }
 
 /**
@@ -61,19 +64,19 @@ export const defaultPluginRenaming = {
  */
 export function xat(
   options: OptionsConfig & Omit<TypedFlatConfigItem, 'files'> = {},
-  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
+  ...userConfigs: Awaitable<FlatConfigComposer<any, any> | Linter.Config[] | TypedFlatConfigItem | TypedFlatConfigItem[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    astro: enableAstro = isPackageExists('astro'),
-    autoRenamePlugins = true,
     componentExts = [],
-    gitignore: enableGitignore = true,
     jsx: enableJsx = true,
-    react: enableReact = isPackageExists('react'),
+    autoRenamePlugins = true,
     regexp: enableRegexp = true,
-    typescript: enableTypeScript = isPackageExists('typescript'),
     unicorn: enableUnicorn = true,
+    gitignore: enableGitignore = true,
+    astro: enableAstro = isPackageExists('astro'),
+    react: enableReact = isPackageExists('react'),
     unocss: enableUnoCSS = isPackageExists('unocss'),
+    typescript: enableTypeScript = isPackageExists('typescript'),
     tailwindcss: enableTailwindCSS = isPackageExists('tailwindcss'),
   } = options
 
@@ -105,8 +108,8 @@ export function xat(
     }
     else {
       configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r({
-        name: 'xat/gitignore',
         strict: false,
+        name: 'xat/gitignore',
       })]))
     }
   }
@@ -143,8 +146,8 @@ export function xat(
     configs.push(typescript({
       ...typescriptOptions,
       componentExts,
-      overrides: getOverrides(options, 'typescript'),
       type: options.type,
+      overrides: getOverrides(options, 'typescript'),
     }))
   }
 
@@ -167,8 +170,8 @@ export function xat(
 
   if (enableReact) {
     configs.push(react({
-      overrides: getOverrides(options, 'react'),
       tsconfigPath,
+      overrides: getOverrides(options, 'react'),
     }))
   }
 
@@ -181,16 +184,16 @@ export function xat(
 
   if (enableAstro) {
     configs.push(astro({
-      overrides: getOverrides(options, 'astro'),
       stylistic: stylisticOptions,
+      overrides: getOverrides(options, 'astro'),
     }))
   }
 
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
-        overrides: getOverrides(options, 'jsonc'),
         stylistic: stylisticOptions,
+        overrides: getOverrides(options, 'jsonc'),
       }),
       sortPackageJson(),
       sortTsconfig(),
@@ -199,15 +202,15 @@ export function xat(
 
   if (options.yaml ?? true) {
     configs.push(yaml({
-      overrides: getOverrides(options, 'yaml'),
       stylistic: stylisticOptions,
+      overrides: getOverrides(options, 'yaml'),
     }))
   }
 
   if (options.toml ?? true) {
     configs.push(toml({
-      overrides: getOverrides(options, 'toml'),
       stylistic: stylisticOptions,
+      overrides: getOverrides(options, 'toml'),
     }))
   }
 
@@ -261,7 +264,7 @@ export function resolveSubOptions<K extends keyof OptionsConfig>(
 export function getOverrides<K extends keyof OptionsConfig>(
   options: OptionsConfig,
   key: K,
-): Partial<Linter.RulesRecord & Rules> {
+): Partial<Rules & Linter.RulesRecord> {
   const sub = resolveSubOptions(options, key)
   return {
     ...'overrides' in sub

@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from '@/types'
+
 import { pluginPerfectionist } from '@/plugins'
 
 /**
@@ -14,25 +15,45 @@ export async function perfectionist(): Promise<TypedFlatConfigItem[]> {
         perfectionist: pluginPerfectionist,
       },
       rules: {
+        'perfectionist/sort-enums': ['error', { order: 'asc', type: 'natural' }],
         'perfectionist/sort-exports': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-imports': ['error', {
+        'perfectionist/sort-interfaces': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-objects': ['error', { order: 'asc', type: 'line-length' }],
+        'perfectionist/sort-union-types': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-object-types': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-named-exports': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-named-imports': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-intersection-types': ['error', { order: 'asc', type: 'line-length' }],
+        'perfectionist/sort-jsx-props': ['error', {
+          order: 'asc',
+          type: 'natural',
           groups: [
-            'type',
-            ['parent-type', 'sibling-type', 'index-type'],
+            'multiline',
+            'shorthand',
+            'unknown',
+          ],
+        }],
+        'perfectionist/sort-imports': ['error', {
+          order: 'asc',
+          type: 'natural',
+          newlinesBetween: 'always',
+          internalPattern: [
+            '~/**',
+            '@/**',
+            '#/**',
+          ],
+          groups: [
+            'builtin-type',
+            'external-type',
+            ['parent-type', 'sibling-type', 'index-type', 'internal-type'],
             'builtin',
             'external',
-            ['internal', 'internal-type'],
-            ['parent', 'sibling', 'index'],
-            'side-effect',
+            ['parent', 'sibling', 'index', 'internal'],
+            ['side-effect', 'side-effect-style'],
             'object',
             'unknown',
           ],
-          newlinesBetween: 'ignore',
-          order: 'asc',
-          type: 'natural',
         }],
-        'perfectionist/sort-named-exports': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-named-imports': ['error', { order: 'asc', type: 'natural' }],
       },
     },
   ]
