@@ -23,11 +23,10 @@
   "scripts": {
     "dev": "nlx @eslint/config-inspector --config eslint.config.js",
     "prepare": "lefthook install && nr build",
-    "prepack": "nr build",
-    "release": "bumpp && nr publish",
-    "build": "nr typegen && tsup --format esm,cjs --clean --dts",
-    "typegen": "tsx scripts/typegen.ts",
-    "typecheck": "tsc --noEmit",
+    "release": "bumpp && publish",
+    "build": "nr type:gen && tsup --format esm,cjs --clean --dts",
+    "type:gen": "tsx scripts/typegen.ts",
+    "type:check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

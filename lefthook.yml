@@ -1,9 +1,8 @@
 pre-commit:
-  parallel: true
   commands:
     eslint:
       glob: '*.{js,ts,jsx,tsx,htm,html,json,yml,yaml,css}'
       run: npm exec eslint --fix --no-warn-ignored {staged_files}
       stage_fixed: true
     typescript:
-      run: npm run typecheck
+      run: npm run type:check
