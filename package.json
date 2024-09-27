@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "nlx @eslint/config-inspector --config eslint.config.js",
     "prepare": "lefthook install && nr build",
-    "release": "bumpp && publish",
+    "release": "bumpp && npm publish",
     "build": "nr type:gen && tsup --format esm,cjs --clean --dts",
     "type:gen": "tsx scripts/typegen.ts",
     "type:check": "tsc --noEmit",
