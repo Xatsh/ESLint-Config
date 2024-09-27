@@ -1,3 +1,5 @@
+import type { Awaitable, ConfigNames, OptionsConfig, Rules, TypedFlatConfigItem } from '@/types'
+import type { Linter } from 'eslint'
 import {
   astro,
   disable,
@@ -11,24 +13,18 @@ import {
   perfectionist,
   react,
   regexp,
-  solid,
   sortPackageJson,
   sortTsconfig,
   stylistic,
-  svelte,
   tailwindcss,
-  test,
   toml,
   typescript,
   unicorn,
   unocss,
-  vue,
   yaml } from '@/configs'
 import { interopDefault, isInEditor } from '@/utils'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
-import type { Awaitable, ConfigNames, OptionsConfig, Rules, TypedFlatConfigItem } from '@/types'
-import type { Linter } from 'eslint'
 
 const flatConfigProps = [
   'name',
@@ -40,13 +36,6 @@ const flatConfigProps = [
   'settings',
 ] satisfies (keyof TypedFlatConfigItem)[]
 
-const VuePackages = [
-  'vue',
-  'nuxt',
-  'vitepress',
-  '@slidev/cli',
-]
-
 export const defaultPluginRenaming = {
   '@eslint-react': 'react',
   '@eslint-react/dom': 'react-dom',
@@ -57,7 +46,6 @@ export const defaultPluginRenaming = {
   '@typescript-eslint': 'ts',
   'import-x': 'import',
   'n': 'node',
-  'vitest': 'test',
   'yml': 'yaml',
 }
 
@@ -83,12 +71,9 @@ export function xat(
     jsx: enableJsx = true,
     react: enableReact = isPackageExists('react'),
     regexp: enableRegexp = true,
-    solid: enableSolid = isPackageExists('solid-js'),
-    svelte: enableSvelte = isPackageExists('svelte'),
     typescript: enableTypeScript = isPackageExists('typescript'),
     unicorn: enableUnicorn = true,
     unocss: enableUnoCSS = isPackageExists('unocss'),
-    vue: enableVue = VuePackages.some(i => isPackageExists(i)),
     tailwindcss: enableTailwindCSS = isPackageExists('tailwindcss'),
   } = options
 
@@ -150,10 +135,6 @@ export function xat(
     configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn))
   }
 
-  if (enableVue) {
-    componentExts.push('vue')
-  }
-
   if (enableJsx) {
     configs.push(jsx())
   }
@@ -184,42 +165,10 @@ export function xat(
     configs.push(regexp(typeof enableRegexp === 'boolean' ? {} : enableRegexp))
   }
 
-  if (options.test ?? true) {
-    configs.push(test({
-      isInEditor: isEditor,
-      overrides: getOverrides(options, 'test'),
-    }))
-  }
-
-  if (enableVue) {
-    configs.push(vue({
-      ...resolveSubOptions(options, 'vue'),
-      overrides: getOverrides(options, 'vue'),
-      stylistic: stylisticOptions,
-      typescript: !!enableTypeScript,
-    }))
-  }
-
   if (enableReact) {
     configs.push(react({
       overrides: getOverrides(options, 'react'),
       tsconfigPath,
-    }))
-  }
-
-  if (enableSolid) {
-    configs.push(solid({
-      overrides: getOverrides(options, 'solid'),
-      tsconfigPath,
-      typescript: !!enableTypeScript,
-    }))
-  }
-
-  if (enableSvelte) {
-    configs.push(svelte({
-      overrides: getOverrides(options, 'svelte'),
-      stylistic: stylisticOptions,
-      typescript: !!enableTypeScript,
     }))
   }
 

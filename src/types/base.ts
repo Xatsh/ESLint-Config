@@ -3,7 +3,6 @@ import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { ParserOptions } from '@typescript-eslint/parser'
 import type { Linter } from 'eslint'
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
-import type { Options as VueBlocksOptions } from 'eslint-processor-vue-blocks'
 
 export type Awaitable<T> = T | Promise<T>
 export type Rules = RuleOptions
@@ -25,16 +24,6 @@ export interface OptionsFiles {
    * Override the `files` option to provide custom globs.
    */
   files?: string[]
-}
-
-export interface OptionsVue extends OptionsOverrides {
-  /**
-   * Create virtual files for Vue SFC blocks to enable linting.
-   *
-   * @see https://github.com/antfu/eslint-processor-vue-blocks
-   * @default true
-   */
-  sfcBlocks?: boolean | VueBlocksOptions
 }
 
 export type OptionsTypescript =
@@ -183,20 +172,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   unicorn?: boolean | OptionsUnicorn
 
   /**
-   * Enable test support.
-   *
-   * @default true
-   */
-  test?: boolean | OptionsOverrides
-
-  /**
-   * Enable Vue support.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  vue?: boolean | OptionsVue
-
-  /**
    * Enable JSONC support.
    *
    * @default true
@@ -255,19 +230,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default auto-detect based on the dependencies
    */
   react?: boolean | OptionsOverrides
-  /**
-   * Enable solid rules.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  solid?: boolean | OptionsOverrides
-
-  /**
-   * Enable svelte rules.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  svelte?: boolean
 
   /**
    * Enable unocss rules.

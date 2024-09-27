@@ -6,19 +6,10 @@ export const GLOB_TSX = '**/*.?([cm])tsx'
 export const GLOB_JSON = '**/*.json'
 export const GLOB_JSON5 = '**/*.json5'
 export const GLOB_JSONC = '**/*.jsonc'
-export const GLOB_SVELTE = '**/*.svelte'
-export const GLOB_VUE = '**/*.vue'
 export const GLOB_YAML = '**/*.y?(a)ml'
 export const GLOB_TOML = '**/*.toml'
 export const GLOB_ASTRO = '**/*.astro'
 export const GLOB_ASTRO_TS = '**/*.astro/*.ts'
-export const GLOB_TESTS = [
-  `**/__tests__/**/*.${GLOB_SRC_EXT}`,
-  `**/*.spec.${GLOB_SRC_EXT}`,
-  `**/*.test.${GLOB_SRC_EXT}`,
-  `**/*.bench.${GLOB_SRC_EXT}`,
-  `**/*.benchmark.${GLOB_SRC_EXT}`,
-]
 export const GLOB_EXCLUDE = [
   '**/node_modules',
   '**/dist',

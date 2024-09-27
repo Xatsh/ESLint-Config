@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises'
-import { astro, imports, javascript, jsdoc, jsonc, jsx, node, perfectionist, react, regexp, solid, sortPackageJson, stylistic, svelte, tailwindcss, test, toml, typescript, unicorn, unocss, vue, yaml } from '@/configs'
+import { astro, imports, javascript, jsdoc, jsonc, jsx, node, perfectionist, react, regexp, sortPackageJson, stylistic, tailwindcss, toml, typescript, unicorn, unocss, yaml } from '@/configs'
 import { combine } from '@/utils'
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 
@@ -13,18 +13,14 @@ const configs = await combine(
   node(),
   perfectionist(),
   react(),
-  solid(),
   sortPackageJson(),
   stylistic(),
-  svelte(),
   tailwindcss(),
-  test(),
   toml(),
   regexp(),
   typescript(),
   unicorn(),
   unocss(),
-  vue(),
   yaml(),
 )
 
