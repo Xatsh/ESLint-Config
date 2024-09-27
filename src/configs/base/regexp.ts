@@ -1,5 +1,5 @@
-import { pluginRegex } from '@/plugins'
 import type { OptionsOverrides, OptionsRegExp, TypedFlatConfigItem } from '@/types'
+import { pluginRegex } from '@/plugins'
 
 export async function regexp(
   options: OptionsRegExp & OptionsOverrides = {},
@@ -20,7 +20,7 @@ export async function regexp(
   return [
     {
       ...config,
-      name: 'xat/regexp/rules',
+      name: 'xat/regexp',
       rules: {
         ...rules,
         ...options.overrides,

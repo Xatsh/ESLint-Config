@@ -1,5 +1,5 @@
-import { pluginImport } from '@/plugins'
 import type { OptionsStylistic, TypedFlatConfigItem } from '@/types'
+import { pluginImport } from '@/plugins'
 
 export async function imports(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
   const {
@@ -8,7 +8,7 @@ export async function imports(options: OptionsStylistic = {}): Promise<TypedFlat
 
   return [
     {
-      name: 'xat/imports/rules',
+      name: 'xat/imports',
       plugins: {
         import: pluginImport,
       },

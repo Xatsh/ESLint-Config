@@ -1,5 +1,5 @@
-import { pluginJsdoc } from '@/plugins'
 import type { OptionsStylistic, TypedFlatConfigItem } from '@/types'
+import { pluginJsdoc } from '@/plugins'
 
 export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
   const {
@@ -8,7 +8,7 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatCo
 
   return [
     {
-      name: 'xat/jsdoc/rules',
+      name: 'xat/jsdoc',
       plugins: {
         jsdoc: pluginJsdoc,
       },

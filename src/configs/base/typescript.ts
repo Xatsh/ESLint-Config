@@ -1,8 +1,8 @@
+import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsProjectType, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
 import process from 'node:process'
 import { GLOB_ASTRO_TS, GLOB_TS, GLOB_TSX } from '@/constants'
 import { parserTs, pluginTs } from '@/plugins'
 import { renameRules } from '@/utils'
-import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsProjectType, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions & OptionsProjectType = {},
@@ -81,7 +81,6 @@ export async function typescript(
 
   return [
     {
-      // Install the plugins without globs, so they can be configured separately.
       name: 'xat/typescript/setup',
       plugins: {
         ts: pluginTs,
@@ -127,8 +126,13 @@ export async function typescript(
         'ts/no-import-type-side-effects': 'error',
         'ts/no-invalid-void-type': 'off',
         'ts/no-non-null-assertion': 'off',
-        'ts/no-redeclare': 'error',
+        'ts/no-redeclare': ['error', { builtinGlobals: false }],
         'ts/no-require-imports': 'error',
+        'ts/no-unused-expressions': ['error', {
+          allowShortCircuit: true,
+          allowTaggedTemplates: true,
+          allowTernary: true,
+        }],
         'ts/no-unused-vars': 'off',
         'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
         'ts/no-useless-constructor': 'off',

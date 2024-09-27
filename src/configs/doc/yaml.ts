@@ -1,6 +1,6 @@
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_YAML } from '@/constants'
 import { parserYaml, pluginYaml } from '@/plugins'
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 export async function yaml(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -18,17 +18,14 @@ export async function yaml(
 
   return [
     {
-      name: 'xat/yaml/setup',
+      name: 'xat/yaml',
       plugins: {
         yaml: pluginYaml,
       },
-    },
-    {
       files,
       languageOptions: {
         parser: parserYaml,
       },
-      name: 'xat/yaml/rules',
       rules: {
         'style/spaced-comment': 'off',
 

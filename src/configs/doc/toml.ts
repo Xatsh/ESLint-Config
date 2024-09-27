@@ -1,6 +1,6 @@
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_TOML } from '@/constants'
 import { parserToml, pluginToml } from '@/plugins'
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 export async function toml(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -17,17 +17,14 @@ export async function toml(
 
   return [
     {
-      name: 'xat/toml/setup',
+      name: 'xat/toml',
       plugins: {
         toml: pluginToml,
       },
-    },
-    {
       files,
       languageOptions: {
         parser: parserToml,
       },
-      name: 'xat/toml/rules',
       rules: {
         'style/spaced-comment': 'off',
 

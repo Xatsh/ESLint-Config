@@ -1,8 +1,8 @@
+import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
 import { GLOB_SRC } from '@/constants'
 import { parserTs, pluginReact, pluginReactHooks, pluginReactRefresh } from '@/plugins'
 import { toArray } from '@/utils'
 import { isPackageExists } from 'local-pkg'
-import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '@/types'
 
 // react refresh
 const ReactRefreshAllowConstantExportPackages = [
@@ -88,6 +88,13 @@ export async function react(
             allowExportNames: [
               ...(isUsingNext
                 ? [
+                    'dynamic',
+                    'dynamicParams',
+                    'revalidate',
+                    'fetchCache',
+                    'runtime',
+                    'preferredRegion',
+                    'maxDuration',
                     'config',
                     'generateStaticParams',
                     'metadata',

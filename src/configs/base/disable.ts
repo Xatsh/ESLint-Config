@@ -1,10 +1,10 @@
-import { GLOB_SRC, GLOB_SRC_EXT } from '@/constants'
 import type { TypedFlatConfigItem } from '@/types'
+import { GLOB_SRC, GLOB_SRC_EXT } from '@/constants'
 
 export async function disable(): Promise<TypedFlatConfigItem[]> {
   return [
     {
-      files: [`scripts/${GLOB_SRC}`],
+      files: [`**/scripts/${GLOB_SRC}`],
       name: 'xat/disable/scripts',
       rules: {
         'no-console': 'off',
@@ -12,7 +12,7 @@ export async function disable(): Promise<TypedFlatConfigItem[]> {
       },
     },
     {
-      files: [`cli/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
+      files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
       name: 'xat/disable/cli',
       rules: {
         'no-console': 'off',
@@ -40,6 +40,14 @@ export async function disable(): Promise<TypedFlatConfigItem[]> {
       name: 'xat/disable/cjs',
       rules: {
         'ts/no-require-imports': 'off',
+      },
+    },
+    {
+      files: [`**/*.config.${GLOB_SRC_EXT}`, `**/*.config.*.${GLOB_SRC_EXT}`],
+      name: 'xat/disables/config-files',
+      rules: {
+        'no-console': 'off',
+        'ts/explicit-function-return-type': 'off',
       },
     },
   ]

@@ -1,6 +1,6 @@
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '@/constants'
 import { parserJsonc, pluginJsonc } from '@/plugins'
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 export async function jsonc(
   options: OptionsFiles & OptionsStylistic & OptionsOverrides = {},
@@ -17,17 +17,14 @@ export async function jsonc(
 
   return [
     {
-      name: 'xat/jsonc/setup',
+      name: 'xat/jsonc',
       plugins: {
-        jsonc: pluginJsonc as any,
+        jsonc: pluginJsonc,
       },
-    },
-    {
       files,
       languageOptions: {
         parser: parserJsonc,
       },
-      name: 'xat/jsonc/rules',
       rules: {
         'jsonc/no-bigint-literals': 'error',
         'jsonc/no-binary-expression': 'error',

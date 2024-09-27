@@ -1,5 +1,5 @@
-import { pluginUnoCSS } from '@/plugins'
 import type { OptionsUnoCSS, TypedFlatConfigItem } from '@/types'
+import { pluginUnoCSS } from '@/plugins'
 
 export async function unocss(
   options: OptionsUnoCSS = {},

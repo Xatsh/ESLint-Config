@@ -1,5 +1,5 @@
-import { GLOB_JSX, GLOB_TSX } from '@/constants'
 import type { TypedFlatConfigItem } from '@/types'
+import { GLOB_JSX, GLOB_TSX } from '@/constants'
 
 export async function jsx(): Promise<TypedFlatConfigItem[]> {
   return [
@@ -12,7 +12,7 @@ export async function jsx(): Promise<TypedFlatConfigItem[]> {
           },
         },
       },
-      name: 'xat/jsx/setup',
+      name: 'xat/jsx',
     },
   ]
 }

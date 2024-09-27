@@ -1,5 +1,5 @@
-import { pluginStylistic } from '@/plugins'
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '@/types'
+import { pluginStylistic } from '@/plugins'
 
 export const StylisticConfigDefaults: StylisticConfig = {
   indent: 2,
@@ -33,13 +33,12 @@ export async function stylistic(
 
   return [
     {
-      name: 'xat/stylistic/rules',
+      name: 'xat/stylistic',
       plugins: {
         style: pluginStylistic,
       },
       rules: {
         ...config.rules,
-
         ...overrides,
       },
     },
