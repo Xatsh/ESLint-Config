@@ -10,14 +10,14 @@
 
 All in One ESLint config.
 
-![My Skills](https://skillicons.dev/icons?i=js,ts,react,vue,astro,solidjs,svelte,tailwind&perline=8)
+![Icons](https://skillicons.dev/icons?i=js,ts,react,astro,tailwind)
 
 ## Features
 
 - Auto fix for formatting (**without** Prettier)
 - [Auto detect](#auto-detect) your codebase and enable needed rules
 - Out of box level's support `toml`, `yaml`, `json`
-- Work with **React, Vue 3, Svelte, Solid, Astro**
+- Work with **React, Astro**
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Respects `.gitignore` by default
@@ -100,23 +100,12 @@ For example:
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
     "json",
     "jsonc",
     "yaml",
     "toml",
     "xml",
-    "gql",
-    "graphql",
     "astro",
-    "svelte",
-    "css",
-    "less",
-    "scss",
-    "pcss",
-    "postcss"
   ]
 }
 ```
@@ -134,9 +123,6 @@ This config will look up your `package.json`, and auto enable related config rul
 
 - Astro: `astro`
 - React: `react`
-- Vue: one of `vue`, `nuxt`, `vitepress`, `@slidev/cli`
-- Svelte: `svelte`
-- SolidJS: `solid`
 
 ### Style
 
@@ -180,18 +166,6 @@ That's all plugins and its status
 - [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) - ⚡️
 - [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh) - ⚡️
 
-### Svelte
-
-- [eslint-plugin-svelte](https://www.npmjs.com/package/eslint-plugin-svelte) - ⚡️
-
-### SolidJS
-
-- [eslint-plugin-solid](https://www.npmjs.com/package/eslint-plugin-solid) - ⚡️
-
-### Vue
-
-- [eslint-plugin-vue](https://npmjs.org/package/eslint-plugin-vue) - ⚡️
-
 ### Style
 
 - [eslint-plugin-tailwindcss](https://www.npmjs.com/package/eslint-plugin-tailwindcss) - ⚡️
@@ -200,8 +174,6 @@ That's all plugins and its status
 ### Devtools
 
 - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - ⚡️
-- [eslint-plugin-no-only-tests](https://www.npmjs.com/package/eslint-plugin-no-only-tests) - 🔧 `test`
-- [@vitest/eslint-plugin](https://www.npmjs.com/package/@vitest/eslint-plugin) - 🔧 `test`
 
 ### Document
 
@@ -259,9 +231,6 @@ export default xat({
   // You can also disable some autodetected configs
   react: false,
   astro: false,
-  vue: false,
-  solid: false,
-  svelte: false,
   typescript: false,
   tailwind: false,
   unocss: false,
@@ -296,45 +265,6 @@ export default xat(
   },
 )
 ```
-
-Going more advanced, you can also import fine-grained configs and compose them as you wish:
-
-<details>
-<summary>Advanced Example</summary>
-
-We wouldn't recommend using this style in general unless you know exactly what they are doing, as there are shared options between configs and might need extra care to make them consistent.
-
-So Let's make a config only for `Astro` and `Vue`:
-
-```js
-// eslint.config.js
-import {
-  combine,
-  astro, // Astro
-  disable, // Disable some rules by default
-  ignore, // ignore files in `.gitignore`
-  javascript, // lol, u may need it
-  typescript, // u may also need this one
-  vue, // Vue
-} from '@xats/eslint-config'
-
-export default combine(
-  astro(/* Options */),
-  disable(/* Options */),
-  ignores(/* Options */),
-  javascript(/* Options */),
-  typescript(/* Options */),
-  vue(/* Options */),
-  {
-    files: ['**/*.ts'],
-    rules: {},
-  },
-)
-```
-
-Yep, you can also make this to your personal config preset.
-
-</details>
 
 Check out the [configs](https://github.com/Xats-Lab/eslint-config/blob/main/src/configs) and [factory](https://github.com/Xats-Lab/eslint-config/blob/main/src/factory.ts) for more details.
 
