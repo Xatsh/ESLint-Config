@@ -1,5 +1,5 @@
-import { pluginTailwindCSS } from '@/plugins'
 import type { OptionsOverrides, TypedFlatConfigItem } from '@/types'
+import { pluginTailwindCSS } from '@/plugins'
 
 export async function tailwindcss(
   options: OptionsOverrides = {},
@@ -8,18 +8,32 @@ export async function tailwindcss(
     overrides = {},
   } = options
 
-  const config = pluginTailwindCSS.configs['flat/recommended'] as TypedFlatConfigItem
-
-  const rules = {
-    ...config.rules,
-  }
-
   return [
     {
-      ...config,
+      name: 'xat/tailwindcss/setup',
+      plugins: {
+        tailwindcss: pluginTailwindCSS,
+      },
+      languageOptions: {
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          },
+        },
+      },
+    },
+    {
       name: 'xat/tailwindcss/rules',
       rules: {
-        ...rules,
+        'tailwindcss/classnames-order': 'warn',
+        'tailwindcss/enforces-negative-arbitrary-values': 'warn',
+        'tailwindcss/enforces-shorthand': 'warn',
+        'tailwindcss/migration-from-tailwind-2': 'warn',
+        'tailwindcss/no-arbitrary-value': 'off',
+        'tailwindcss/no-custom-classname': 'warn',
+        'tailwindcss/no-contradicting-classname': 'error',
+        'tailwindcss/no-unnecessary-arbitrary-value': 'warn',
+
         ...overrides,
       },
     },
