@@ -17,31 +17,7 @@ export async function perfectionist(): Promise<TypedFlatConfigItem[]> {
       rules: {
         'perfectionist/sort-enums': ['error', { order: 'asc', type: 'natural' }],
         'perfectionist/sort-exports': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-interfaces': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-objects': ['error', { order: 'asc', type: 'line-length' }],
-        'perfectionist/sort-union-types': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-object-types': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-named-exports': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-named-imports': ['error', { order: 'asc', type: 'natural' }],
-        'perfectionist/sort-intersection-types': ['error', { order: 'asc', type: 'line-length' }],
-        'perfectionist/sort-jsx-props': ['error', {
-          order: 'asc',
-          type: 'natural',
-          groups: [
-            'multiline',
-            'shorthand',
-            'unknown',
-          ],
-        }],
         'perfectionist/sort-imports': ['error', {
-          order: 'asc',
-          type: 'natural',
-          newlinesBetween: 'always',
-          internalPattern: [
-            '~/**',
-            '@/**',
-            '#/**',
-          ],
           groups: [
             'builtin-type',
             'external-type',
@@ -53,7 +29,31 @@ export async function perfectionist(): Promise<TypedFlatConfigItem[]> {
             'object',
             'unknown',
           ],
+          internalPattern: [
+            '~/**',
+            '@/**',
+            '#/**',
+          ],
+          newlinesBetween: 'always',
+          order: 'asc',
+          type: 'natural',
         }],
+        'perfectionist/sort-interfaces': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-intersection-types': ['error', { order: 'asc', type: 'line-length' }],
+        'perfectionist/sort-jsx-props': ['error', {
+          groups: [
+            'multiline',
+            'shorthand',
+            'unknown',
+          ],
+          order: 'asc',
+          type: 'natural',
+        }],
+        'perfectionist/sort-named-exports': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-named-imports': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-object-types': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-objects': ['error', { order: 'asc', type: 'natural' }],
+        'perfectionist/sort-union-types': ['error', { order: 'asc', type: 'natural' }],
       },
     },
   ]

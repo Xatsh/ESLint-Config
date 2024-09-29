@@ -7,9 +7,9 @@ export async function yaml(
   options: OptionsFiles & OptionsOverrides & OptionsStylistic = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
+    files = [GLOB_YAML],
     overrides = {},
     stylistic = true,
-    files = [GLOB_YAML],
   } = options
 
   const {
@@ -20,38 +20,38 @@ export async function yaml(
   return [
     {
       files,
-      name: 'xat/yaml',
-      plugins: {
-        yaml: pluginYaml,
-      },
       languageOptions: {
         parser: parserYaml,
       },
+      name: 'xat/yaml',
+      plugins: {
+        yml: pluginYaml,
+      },
       rules: {
-        'yaml/no-empty-key': 'error',
+        '@stylistic/spaced-comment': 'off',
 
-        'yaml/plain-scalar': 'error',
-        'style/spaced-comment': 'off',
-        'yaml/block-mapping': 'error',
-        'yaml/block-sequence': 'error',
-        'yaml/no-empty-sequence-entry': 'error',
-        'yaml/no-irregular-whitespace': 'error',
+        'yml/block-mapping': 'error',
+        'yml/block-sequence': 'error',
+        'yml/no-empty-key': 'error',
+        'yml/no-empty-sequence-entry': 'error',
+        'yml/no-irregular-whitespace': 'error',
+        'yml/plain-scalar': 'error',
 
-        'yaml/vue-custom-block/no-parsing-error': 'error',
+        'yml/vue-custom-block/no-parsing-error': 'error',
 
         ...stylistic
           ? {
-              'yaml/key-spacing': 'error',
-              'yaml/no-tab-indent': 'error',
-              'yaml/spaced-comment': 'error',
-              'yaml/flow-mapping-curly-newline': 'error',
-              'yaml/flow-mapping-curly-spacing': 'error',
-              'yaml/flow-sequence-bracket-newline': 'error',
-              'yaml/flow-sequence-bracket-spacing': 'error',
-              'yaml/block-sequence-hyphen-indicator-newline': 'error',
-              'yaml/indent': ['error', indent === 'tab' ? 2 : indent],
-              'yaml/block-mapping-question-indicator-newline': 'error',
-              'yaml/quotes': ['error', { prefer: quotes, avoidEscape: false }],
+              'yml/block-mapping-question-indicator-newline': 'error',
+              'yml/block-sequence-hyphen-indicator-newline': 'error',
+              'yml/flow-mapping-curly-newline': 'error',
+              'yml/flow-mapping-curly-spacing': 'error',
+              'yml/flow-sequence-bracket-newline': 'error',
+              'yml/flow-sequence-bracket-spacing': 'error',
+              'yml/indent': ['error', indent === 'tab' ? 2 : indent],
+              'yml/key-spacing': 'error',
+              'yml/no-tab-indent': 'error',
+              'yml/quotes': ['error', { avoidEscape: false, prefer: quotes }],
+              'yml/spaced-comment': 'error',
             }
           : {},
 

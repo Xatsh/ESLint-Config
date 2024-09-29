@@ -141,13 +141,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   astro?: boolean | OptionsOverrides
 
   /**
-   * Automatically rename plugins in the config.
-   *
-   * @default true
-   */
-  autoRenamePlugins?: boolean
-
-  /**
    * Enable gitignore support.
    *
    * Passing an object to configure the options.
@@ -156,6 +149,13 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default true
    */
   gitignore?: boolean | FlatGitignoreOptions
+
+  /**
+   * Enable HTML support.
+   *
+   * @default true
+   */
+  html?: boolean | OptionsOverrides
 
   /**
    * Control to disable some rules in editors.
