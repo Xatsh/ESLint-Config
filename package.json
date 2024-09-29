@@ -47,6 +47,7 @@
     "eslint-flat-config-utils": "^0.4.0",
     "eslint-merge-processors": "^0.1.0",
     "eslint-plugin-astro": "^1.2.4",
+    "eslint-plugin-html": "^8.1.2",
     "eslint-plugin-import-x": "^4.3.0",
     "eslint-plugin-jsdoc": "^50.3.0",
     "eslint-plugin-jsonc": "^2.16.0",

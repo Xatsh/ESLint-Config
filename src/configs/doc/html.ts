@@ -1,7 +1,7 @@
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '@/types'
 
 import { GLOB_HTML } from '@/constants'
-import { parserHtml, pluginHtml } from '@/plugins'
+import { parserHtml, pluginHtml, pluginHtmlJs } from '@/plugins'
 
 export async function html(
   options: OptionsFiles & OptionsOverrides & OptionsStylistic = {},
@@ -30,9 +30,11 @@ export async function html(
       name: 'xat/html',
       plugins: {
         '@html-eslint': pluginHtml,
+        'html': pluginHtmlJs,
       },
       rules: {
         '@stylistic/spaced-comment': 'off',
+        'no-console': 'off',
 
         ...rules,
 
