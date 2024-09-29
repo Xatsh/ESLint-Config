@@ -16,7 +16,7 @@ All in One ESLint config.
 
 - Auto fix for formatting (**without** Prettier)
 - [Auto detect](#auto-detect) your codebase and enable needed rules
-- Out of box level's support `toml`, `yaml`, `json`
+- Out of box level's support `toml`, `yaml`, `json`, `html`
 - Work with **React, Astro**
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
@@ -104,7 +104,7 @@ For example:
     "jsonc",
     "yaml",
     "toml",
-    "xml",
+    "html",
     "astro",
   ]
 }
