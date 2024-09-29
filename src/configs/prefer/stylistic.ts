@@ -1,5 +1,6 @@
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '@/types'
 
+import { GLOB_HTML } from '@/constants'
 import { pluginStylistic } from '@/plugins'
 
 export async function stylistic(
@@ -25,6 +26,7 @@ export async function stylistic(
 
   return [
     {
+      ignores: [GLOB_HTML],
       name: 'xat/stylistic',
       plugins: {
         '@stylistic': pluginStylistic,

@@ -208,6 +208,7 @@ export function xat(
   if (enableHtml) {
     configs.push(html({
       overrides: getOverrides(options, 'html'),
+      stylistic: stylisticOptions,
     }))
   }
 
