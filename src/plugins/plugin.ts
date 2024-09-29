@@ -1,4 +1,5 @@
 export { default as pluginReact } from '@eslint-react/eslint-plugin'
+export { default as pluginHtml } from '@html-eslint/eslint-plugin'
 export { default as pluginStylistic } from '@stylistic/eslint-plugin'
 export { default as pluginTs } from '@typescript-eslint/eslint-plugin'
 export { default as pluginUnoCSS } from '@unocss/eslint-plugin'

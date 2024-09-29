@@ -8,6 +8,7 @@ import { isPackageExists } from 'local-pkg'
 import {
   astro,
   disable,
+  html,
   ignore,
   imports,
   javascript,
@@ -39,19 +40,6 @@ const flatConfigProps = [
   'settings',
 ] satisfies (keyof TypedFlatConfigItem)[]
 
-export const defaultPluginRenaming = {
-  'n': 'node',
-  'yml': 'yaml',
-  'import-x': 'import',
-  '@stylistic': 'style',
-
-  '@eslint-react': 'react',
-  '@typescript-eslint': 'ts',
-  '@eslint-react/dom': 'react-dom',
-  '@eslint-react/hooks-extra': 'react-hooks-extra',
-  '@eslint-react/naming-convention': 'react-naming-convention',
-}
-
 /**
  * Construct an array of ESLint flat config items.
  *
@@ -67,17 +55,20 @@ export function xat(
   ...userConfigs: Awaitable<FlatConfigComposer<any, any> | Linter.Config[] | TypedFlatConfigItem | TypedFlatConfigItem[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    componentExts = [],
-    jsx: enableJsx = true,
-    autoRenamePlugins = true,
-    regexp: enableRegexp = true,
-    unicorn: enableUnicorn = true,
-    gitignore: enableGitignore = true,
     astro: enableAstro = isPackageExists('astro'),
+    componentExts = [],
+    gitignore: enableGitignore = true,
+    html: enableHtml = true,
+    jsonc: enableJsonc = true,
+    jsx: enableJsx = true,
     react: enableReact = isPackageExists('react'),
-    unocss: enableUnoCSS = isPackageExists('unocss'),
-    typescript: enableTypeScript = isPackageExists('typescript'),
+    regexp: enableRegexp = true,
     tailwindcss: enableTailwindCSS = isPackageExists('tailwindcss'),
+    toml: enableToml = true,
+    typescript: enableTypeScript = isPackageExists('typescript'),
+    unicorn: enableUnicorn = true,
+    unocss: enableUnoCSS = isPackageExists('unocss'),
+    yaml: enableYaml = true,
   } = options
 
   let isEditor = options.isInEditor
@@ -108,8 +99,8 @@ export function xat(
     }
     else {
       configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r({
-        strict: false,
         name: 'xat/gitignore',
+        strict: false,
       })]))
     }
   }
@@ -146,8 +137,8 @@ export function xat(
     configs.push(typescript({
       ...typescriptOptions,
       componentExts,
-      type: options.type,
       overrides: getOverrides(options, 'typescript'),
+      type: options.type,
     }))
   }
 
@@ -170,8 +161,8 @@ export function xat(
 
   if (enableReact) {
     configs.push(react({
-      tsconfigPath,
       overrides: getOverrides(options, 'react'),
+      tsconfigPath,
     }))
   }
 
@@ -184,33 +175,39 @@ export function xat(
 
   if (enableAstro) {
     configs.push(astro({
-      stylistic: stylisticOptions,
       overrides: getOverrides(options, 'astro'),
+      stylistic: stylisticOptions,
     }))
   }
 
-  if (options.jsonc ?? true) {
+  if (enableJsonc) {
     configs.push(
       jsonc({
-        stylistic: stylisticOptions,
         overrides: getOverrides(options, 'jsonc'),
+        stylistic: stylisticOptions,
       }),
       sortPackageJson(),
       sortTsconfig(),
     )
   }
 
-  if (options.yaml ?? true) {
+  if (enableYaml) {
     configs.push(yaml({
-      stylistic: stylisticOptions,
       overrides: getOverrides(options, 'yaml'),
+      stylistic: stylisticOptions,
     }))
   }
 
-  if (options.toml ?? true) {
+  if (enableToml) {
     configs.push(toml({
-      stylistic: stylisticOptions,
       overrides: getOverrides(options, 'toml'),
+      stylistic: stylisticOptions,
+    }))
+  }
+
+  if (enableHtml) {
+    configs.push(html({
+      overrides: getOverrides(options, 'html'),
     }))
   }
 
@@ -239,11 +236,6 @@ export function xat(
       ...configs,
       ...userConfigs as any,
     )
-
-  if (autoRenamePlugins) {
-    composer = composer
-      .renamePlugins(defaultPluginRenaming)
-  }
 
   return composer
 }
