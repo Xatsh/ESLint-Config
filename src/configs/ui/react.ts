@@ -44,7 +44,7 @@ export async function react(
       name: 'xat/react/setup',
       plugins: {
         '@eslint-react': plugins['@eslint-react'],
-        '@eslint-react/doom': plugins['@eslint-react/dom'],
+        '@eslint-react/dom': plugins['@eslint-react/dom'],
         '@eslint-react/hooks-extra': plugins['@eslint-react/hooks-extra'],
         '@eslint-react/naming-convention': plugins['@eslint-react/naming-convention'],
         'react-hooks': pluginReactHooks,
