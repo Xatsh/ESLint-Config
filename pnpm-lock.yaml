@@ -11,6 +11,12 @@ importers:
       '@eslint-react/eslint-plugin':
         specifier: ^1.16.1
         version: 1.16.1(eslint@9.15.0(jiti@2.0.0))(typescript@5.6.3)
+      '@html-eslint/eslint-plugin':
+        specifier: ^0.27.0
+        version: 0.27.0
+      '@html-eslint/parser':
+        specifier: ^0.27.0
+        version: 0.27.0
       '@stylistic/eslint-plugin':
         specifier: ^2.11.0
         version: 2.11.0(eslint@9.15.0(jiti@2.0.0))(typescript@5.6.3)
@@ -763,6 +769,14 @@ packages:
   '@eslint/plugin-kit@0.2.3':
     resolution: {integrity: sha512-2b/g5hRmpbb1o4GnTZax9N9m0FXzz9OV42ZzI4rDDMDuHUqigAiQCEWChBWCY4ztAGVRjoWT19v0yMmc5/L5kA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@html-eslint/eslint-plugin@0.27.0':
+    resolution: {integrity: sha512-aAF14sgDKidMCCQpJ4kIhe+fwyAaAbvDlgVTIgd99F+HOWxokTTXDt39a3gewMBo76IeEHDaoizUDJQ/Vc7Mdg==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@html-eslint/parser@0.27.0':
+    resolution: {integrity: sha512-F/A1M0jnDAYoRvJiiSC7pIBD9DAsf4EhbndbvEi81aozD/wI8WWXON50xZPUaGHCI1C+2syTVifxDz8MvDKaQA==}
+    engines: {node: '>=8.10.0'}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1685,6 +1699,9 @@ packages:
 
   error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
+
+  es-html-parser@0.0.9:
+    resolution: {integrity: sha512-oniQMi+466VFsDzcdron9Ry/sqUJpDJg1bbDn0jFJKDdxXhwIOYDr4DgBnO5/yPLGj2xv+n5yy4L1Q0vAC5TYQ==}
 
   es-module-lexer@1.5.4:
     resolution: {integrity: sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==}
@@ -4168,6 +4185,12 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
+  '@html-eslint/eslint-plugin@0.27.0': {}
+
+  '@html-eslint/parser@0.27.0':
+    dependencies:
+      es-html-parser: 0.0.9
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -5217,6 +5240,8 @@ snapshots:
   error-ex@1.3.2:
     dependencies:
       is-arrayish: 0.2.1
+
+  es-html-parser@0.0.9: {}
 
   es-module-lexer@1.5.4: {}
 

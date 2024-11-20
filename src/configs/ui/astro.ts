@@ -56,6 +56,7 @@ export async function astro(
         'astro/no-deprecated-getentrybyslug': 'error',
         'astro/no-set-html-directive': 'error',
         'astro/no-unused-define-vars-in-style': 'error',
+        'astro/sort-attributes': 'error',
         'astro/valid-compile': 'error',
 
         'perfectionist/sort-astro-attributes': [

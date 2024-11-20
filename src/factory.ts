@@ -8,7 +8,6 @@ import { isPackageExists } from 'local-pkg'
 import {
   astro,
   disable,
-  html,
   ignore,
   imports,
   javascript,
@@ -58,7 +57,6 @@ export function xat(
     astro: enableAstro = isPackageExists('astro'),
     componentExts = [],
     gitignore: enableGitignore = true,
-    html: enableHtml = true,
     jsonc: enableJsonc = true,
     jsx: enableJsx = true,
     react: enableReact = isPackageExists('react'),
@@ -201,13 +199,6 @@ export function xat(
   if (enableToml) {
     configs.push(toml({
       overrides: getOverrides(options, 'toml'),
-      stylistic: stylisticOptions,
-    }))
-  }
-
-  if (enableHtml) {
-    configs.push(html({
-      overrides: getOverrides(options, 'html'),
       stylistic: stylisticOptions,
     }))
   }

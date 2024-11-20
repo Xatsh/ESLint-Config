@@ -151,13 +151,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   gitignore?: boolean | FlatGitignoreOptions
 
   /**
-   * Enable HTML support.
-   *
-   * @default true
-   */
-  html?: boolean | OptionsOverrides
-
-  /**
    * Control to disable some rules in editors.
    * @default auto-detect based on the process.env
    */

@@ -53,7 +53,7 @@ export async function html(
               '@html-eslint/no-extra-spacing-attrs': 'error',
               '@html-eslint/no-multiple-empty-lines': 'error',
               '@html-eslint/no-trailing-spaces': 'error',
-              '@html-eslint/quotes': ['error', quotes],
+              '@html-eslint/quotes': ['error', quotes === 'backtick' ? 'single' : quotes],
               '@html-eslint/sort-attrs': 'error',
             }
           : {},
