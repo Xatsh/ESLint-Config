@@ -369,6 +369,162 @@ export interface RuleOptions {
    */
   '@eslint-react/prefer-shorthand-fragment'?: Linter.RuleEntry<[]>
   /**
+   * Enforce newline between attributes
+   */
+  '@html-eslint/attrs-newline'?: Linter.RuleEntry<HtmlEslintAttrsNewline>
+  /**
+   * Enforce newline between elements.
+   */
+  '@html-eslint/element-newline'?: Linter.RuleEntry<HtmlEslintElementNewline>
+  /**
+   * Enforce consistent naming id attributes
+   */
+  '@html-eslint/id-naming-convention'?: Linter.RuleEntry<HtmlEslintIdNamingConvention>
+  /**
+   * Enforce consistent indentation
+   */
+  '@html-eslint/indent'?: Linter.RuleEntry<HtmlEslintIndent>
+  /**
+   * Enforce to use lowercase for tag and attribute names.
+   */
+  '@html-eslint/lowercase'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow to use of abstract roles
+   */
+  '@html-eslint/no-abstract-roles'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow to use of accesskey attribute
+   */
+  '@html-eslint/no-accesskey-attrs'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow to use aria-hidden attributes on the `body` element.
+   */
+  '@html-eslint/no-aria-hidden-body'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow to use duplicate attributes
+   */
+  '@html-eslint/no-duplicate-attrs'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow to use duplicate id
+   */
+  '@html-eslint/no-duplicate-id'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow an extra spacing around attributes
+   */
+  '@html-eslint/no-extra-spacing-attrs'?: Linter.RuleEntry<HtmlEslintNoExtraSpacingAttrs>
+  /**
+   * Disallow unnecessary consecutive spaces
+   */
+  '@html-eslint/no-extra-spacing-text'?: Linter.RuleEntry<HtmlEslintNoExtraSpacingText>
+  /**
+   * Disallow using inline style
+   */
+  '@html-eslint/no-inline-styles'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow multiple empty lines
+   */
+  '@html-eslint/no-multiple-empty-lines'?: Linter.RuleEntry<HtmlEslintNoMultipleEmptyLines>
+  /**
+   * Disallow multiple `<h1></h1>`.
+   */
+  '@html-eslint/no-multiple-h1'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow use of `user-scalable=no` in `<meta name="viewport">`.
+   */
+  '@html-eslint/no-non-scalable-viewport'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow to use obsolete elements in HTML5
+   */
+  '@html-eslint/no-obsolete-tags'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow use of positive `tabindex`.
+   */
+  '@html-eslint/no-positive-tabindex'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow specified attributes
+   */
+  '@html-eslint/no-restricted-attr-values'?: Linter.RuleEntry<HtmlEslintNoRestrictedAttrValues>
+  /**
+   * Disallow specified attributes
+   */
+  '@html-eslint/no-restricted-attrs'?: Linter.RuleEntry<HtmlEslintNoRestrictedAttrs>
+  /**
+   * Enforce to omit type attributes for style sheets and scripts
+   */
+  '@html-eslint/no-script-style-type'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow skipping heading levels
+   */
+  '@html-eslint/no-skip-heading-levels'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow usage of unsafe `target='_blank'`
+   */
+  '@html-eslint/no-target-blank'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow trailing whitespace at the end of lines
+   */
+  '@html-eslint/no-trailing-spaces'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce consistent quoting attributes with double(") or single(')
+   */
+  '@html-eslint/quotes'?: Linter.RuleEntry<HtmlEslintQuotes>
+  /**
+   * Require specified attributes
+   */
+  '@html-eslint/require-attrs'?: Linter.RuleEntry<HtmlEslintRequireAttrs>
+  /**
+   * Require use of button element with a valid type attribute.
+   */
+  '@html-eslint/require-button-type'?: Linter.RuleEntry<[]>
+  /**
+   * Require closing tags.
+   */
+  '@html-eslint/require-closing-tags'?: Linter.RuleEntry<HtmlEslintRequireClosingTags>
+  /**
+   * Require `<!DOCTYPE HTML>` in html,
+   */
+  '@html-eslint/require-doctype'?: Linter.RuleEntry<[]>
+  /**
+   * Require `title` in `<frame>`, `<iframe>`
+   */
+  '@html-eslint/require-frame-title'?: Linter.RuleEntry<[]>
+  /**
+   * Require `alt` attribute at `<img>` tag
+   */
+  '@html-eslint/require-img-alt'?: Linter.RuleEntry<HtmlEslintRequireImgAlt>
+  /**
+   * Require `lang` attribute at `<html>` tag
+   */
+  '@html-eslint/require-lang'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce `<li>` to be in  `<ul>`, `<ol>` or `<menu>`.
+   */
+  '@html-eslint/require-li-container'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce to use `<meta charset="...">` in `<head>`
+   */
+  '@html-eslint/require-meta-charset'?: Linter.RuleEntry<[]>
+  /**
+   * Require use of `<meta name="description">` in `<head>`
+   */
+  '@html-eslint/require-meta-description'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce to use `<meta name="viewport">` in `<head>`
+   */
+  '@html-eslint/require-meta-viewport'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce to use `<meta name="viewport">` in `<head>`
+   */
+  '@html-eslint/require-open-graph-protocol'?: Linter.RuleEntry<HtmlEslintRequireOpenGraphProtocol>
+  /**
+   * Require `<title><title/>` in the `<head><head/>`
+   */
+  '@html-eslint/require-title'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce attributes alphabetical sorting
+   */
+  '@html-eslint/sort-attrs'?: Linter.RuleEntry<HtmlEslintSortAttrs>
+  /**
    * Enforce linebreaks after opening and before closing array brackets
    * @see https://eslint.style/rules/js/array-bracket-newline
    */
@@ -4276,6 +4432,80 @@ type EslintReactNamingConventionFilenameExtension = []|[(("always" | "as-needed"
 type EslintReactNoUselessFragment = []|[{
   
   allowExpressions?: boolean
+}]
+// ----- @html-eslint/attrs-newline -----
+type HtmlEslintAttrsNewline = []|[{
+  closeStyle?: ("newline" | "sameline")
+  ifAttrsMoreThan?: number
+  [k: string]: unknown | undefined
+}]
+// ----- @html-eslint/element-newline -----
+type HtmlEslintElementNewline = []|[{
+  inline?: string[]
+  skip?: string[]
+  [k: string]: unknown | undefined
+}]
+// ----- @html-eslint/id-naming-convention -----
+type HtmlEslintIdNamingConvention = []|[("camelCase" | "snake_case" | "PascalCase" | "kebab-case" | "regex")]|[("camelCase" | "snake_case" | "PascalCase" | "kebab-case" | "regex"), {
+  pattern?: string
+  flags?: string
+}]
+// ----- @html-eslint/indent -----
+type HtmlEslintIndent = []|[("tab" | number)]
+// ----- @html-eslint/no-extra-spacing-attrs -----
+type HtmlEslintNoExtraSpacingAttrs = []|[{
+  disallowInAssignment?: boolean
+  disallowMissing?: boolean
+  disallowTabs?: boolean
+  enforceBeforeSelfClose?: boolean
+  [k: string]: unknown | undefined
+}]
+// ----- @html-eslint/no-extra-spacing-text -----
+type HtmlEslintNoExtraSpacingText = []|[{
+  skip?: string[]
+}]
+// ----- @html-eslint/no-multiple-empty-lines -----
+type HtmlEslintNoMultipleEmptyLines = []|[{
+  max: number
+}]
+// ----- @html-eslint/no-restricted-attr-values -----
+type HtmlEslintNoRestrictedAttrValues = {
+  attrPatterns: string[]
+  attrValuePatterns: string[]
+  message?: string
+  [k: string]: unknown | undefined
+}[]
+// ----- @html-eslint/no-restricted-attrs -----
+type HtmlEslintNoRestrictedAttrs = {
+  tagPatterns: string[]
+  attrPatterns: string[]
+  message?: string
+  [k: string]: unknown | undefined
+}[]
+// ----- @html-eslint/quotes -----
+type HtmlEslintQuotes = []|[("single" | "double")]
+// ----- @html-eslint/require-attrs -----
+type HtmlEslintRequireAttrs = {
+  tag: string
+  attr: string
+  value?: string
+}[]
+// ----- @html-eslint/require-closing-tags -----
+type HtmlEslintRequireClosingTags = []|[{
+  selfClosing?: ("always" | "never")
+  selfClosingCustomPatterns?: string[]
+}]
+// ----- @html-eslint/require-img-alt -----
+type HtmlEslintRequireImgAlt = []|[{
+  substitute?: string[]
+  [k: string]: unknown | undefined
+}]
+// ----- @html-eslint/require-open-graph-protocol -----
+type HtmlEslintRequireOpenGraphProtocol = []|[string[]]
+// ----- @html-eslint/sort-attrs -----
+type HtmlEslintSortAttrs = []|[{
+  priority?: string[]
+  [k: string]: unknown | undefined
 }]
 // ----- @stylistic/array-bracket-newline -----
 type StylisticArrayBracketNewline = []|[(("always" | "never" | "consistent") | {
@@ -9092,4 +9322,4 @@ type YmlSpacedComment = []|[("always" | "never")]|[("always" | "never"), {
   markers?: string[]
 }]
 // Names of all the configs
-export type ConfigNames = 'xat/astro/setup' | 'xat/astro/script' | 'xat/astro/rules' | 'xat/imports' | 'xat/javascript/setup' | 'xat/javascript/rules' | 'xat/jsx' | 'xat/jsdoc' | 'xat/jsonc' | 'xat/node' | 'xat/perfectionist' | 'xat/react/setup' | 'xat/react/rules' | 'xat/sort/package-json' | 'xat/stylistic' | 'xat/tailwindcss/setup' | 'xat/tailwindcss/rules' | 'xat/toml' | 'xat/regexp' | 'xat/typescript/setup' | 'xat/typescript/parser' | 'xat/typescript/rules' | 'xat/unicorn' | 'xat/unocss' | 'xat/yaml'
+export type ConfigNames = 'xat/astro/setup' | 'xat/astro/script' | 'xat/astro/rules' | 'xat/imports' | 'xat/javascript/setup' | 'xat/javascript/rules' | 'xat/jsx' | 'xat/jsdoc' | 'xat/html' | 'xat/jsonc' | 'xat/node' | 'xat/perfectionist' | 'xat/react/setup' | 'xat/react/rules' | 'xat/sort/package-json' | 'xat/stylistic' | 'xat/tailwindcss/setup' | 'xat/tailwindcss/rules' | 'xat/toml' | 'xat/regexp' | 'xat/typescript/setup' | 'xat/typescript/parser' | 'xat/typescript/rules' | 'xat/unicorn' | 'xat/unocss' | 'xat/yaml'
