@@ -3,9 +3,8 @@
 [![npm](https://img.shields.io/npm/v/@xats/eslint-config?color=444&label=)](https://npmjs.com/package/@xats/eslint-config)
 ![code style](https://antfu.me/badge-code-style.svg)
 
-
 > Base on [Antfu's ESLint config preset](https://github.com/antfu/eslint-config)
-> 
+>
 > Inspired by [Hyoban's ESLint config preset](https://github.com/hyoban/eslint-config-hyoban)
 
 All in One ESLint config.
@@ -30,12 +29,15 @@ All in One ESLint config.
 ```shell
 npm install -D eslint @xats/eslint-config
 ```
+
 ```shell
 pnpm add -D eslint @xats/eslint-config
 ```
+
 ```shell
 yarn add -D eslint @xats/eslint-config
 ```
+
 ```shell
 bun add -D eslint @xats/eslint-config
 ```
