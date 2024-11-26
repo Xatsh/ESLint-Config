@@ -1,4 +1,4 @@
-import type { Awaitable, TypedFlatConfigItem } from '@/types'
+import type { Awaitable, TypedFlatConfigItem } from "@/types"
 
 /**
  * Converts a value or an array of values to an array.
@@ -8,7 +8,7 @@ import type { Awaitable, TypedFlatConfigItem } from '@/types'
  * @template T - The type of the value(s) in the array.
  */
 export function toArray<T>(value: T | T[]): T[] {
-  return Array.isArray(value) ? value : [value]
+	return Array.isArray(value) ? value : [value]
 }
 
 /**
@@ -18,8 +18,8 @@ export function toArray<T>(value: T | T[]): T[] {
  * @returns A Promise that resolves to an array of TypedFlatConfigItem representing the combined configurations.
  */
 export async function combine(...configs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]): Promise<TypedFlatConfigItem[]> {
-  const resolved = await Promise.all(configs)
-  return resolved.flat()
+	const resolved = await Promise.all(configs)
+	return resolved.flat()
 }
 
 /**
@@ -29,6 +29,6 @@ export async function combine(...configs: Awaitable<TypedFlatConfigItem | TypedF
  * @returns The default export if available, otherwise the value itself.
  */
 export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { default: infer U } ? U : T> {
-  const resolved = await m
-  return (resolved as any).default || resolved
+	const resolved = await m
+	return (resolved as any).default || resolved
 }

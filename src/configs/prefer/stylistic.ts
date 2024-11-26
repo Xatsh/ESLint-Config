@@ -1,38 +1,38 @@
-import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '@/types'
+import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from "@/types"
 
-import { pluginStylistic } from '@/plugins'
+import { pluginStylistic } from "@/plugins"
 
 export async function stylistic(
-  options: StylisticConfig & OptionsOverrides = {},
+	options: StylisticConfig & OptionsOverrides = {},
 ): Promise<TypedFlatConfigItem[]> {
-  const {
-    indent,
-    jsx,
-    overrides = {},
-    quotes,
-    semi,
-  } = {
-    ...options,
-  }
+	const {
+		indent = "tab",
+		jsx,
+		overrides = {},
+		quotes = "double",
+		semi = false,
+	} = {
+		...options,
+	}
 
-  const config = pluginStylistic.configs.customize({
-    flat: true,
-    indent,
-    jsx,
-    quotes,
-    semi,
-  })
+	const config = pluginStylistic.configs.customize({
+		flat: true,
+		indent,
+		jsx,
+		quotes,
+		semi,
+	})
 
-  return [
-    {
-      name: 'xat/stylistic',
-      plugins: {
-        '@stylistic': pluginStylistic,
-      },
-      rules: {
-        ...config.rules,
-        ...overrides,
-      },
-    },
-  ]
+	return [
+		{
+			name: "xat/stylistic",
+			plugins: {
+				"@stylistic": pluginStylistic,
+			},
+			rules: {
+				...config.rules,
+				...overrides,
+			},
+		},
+	]
 }

@@ -1,1 +1,1 @@
-export * from './globs'
+export * from "./globs"

@@ -1,5 +1,5 @@
-import { xat } from './dist/index.js'
+import { xat } from "./dist/index.js"
 
 export default xat({
-  type: 'lib',
+	type: "lib",
 })

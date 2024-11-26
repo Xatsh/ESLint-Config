@@ -1,30 +1,30 @@
-import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
-import type { ParserOptions } from '@typescript-eslint/parser'
-import type { Linter } from 'eslint'
-import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
+import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin"
+import type { ParserOptions } from "@typescript-eslint/parser"
+import type { Linter } from "eslint"
+import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore"
 
-import type { ConfigNames, RuleOptions } from '@/types/modules/eslint'
+import type { ConfigNames, RuleOptions } from "@/types/modules/eslint"
 
 export type Awaitable<T> = Promise<T> | T
 export type Rules = RuleOptions
 
 export type { ConfigNames }
 
-export type TypedFlatConfigItem = Omit<Linter.Config<Rules & Linter.RulesRecord>, 'plugins'> & {
-  // Relax plugins type limitation, as most of the plugins did not have correct type info yet.
-  /**
-   * An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
-   *
-   * @see [Using plugins in your configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#using-plugins-in-your-configuration)
-   */
-  plugins?: Record<string, any>
+export type TypedFlatConfigItem = Omit<Linter.Config<Rules & Linter.RulesRecord>, "plugins"> & {
+	// Relax plugins type limitation, as most of the plugins did not have correct type info yet.
+	/**
+	 * An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
+	 *
+	 * @see [Using plugins in your configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#using-plugins-in-your-configuration)
+	 */
+	plugins?: Record<string, any>
 }
 
 export interface OptionsFiles {
-  /**
-   * Override the `files` option to provide custom globs.
-   */
-  files?: string[]
+	/**
+	 * Override the `files` option to provide custom globs.
+	 */
+	files?: string[]
 }
 
 export type OptionsTypescript =
@@ -32,216 +32,216 @@ export type OptionsTypescript =
   | (OptionsOverrides & OptionsTypeScriptWithTypes)
 
 export interface OptionsComponentExts {
-  /**
-   * Additional extensions for components.
-   *
-   * @example ['vue']
-   * @default []
-   */
-  componentExts?: string[]
+	/**
+	 * Additional extensions for components.
+	 *
+	 * @example ['vue']
+	 * @default []
+	 */
+	componentExts?: string[]
 }
 
 export interface OptionsUnicorn {
-  /**
-   * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Anthony.
-   *
-   * @default false
-   */
-  allRecommended?: boolean
+	/**
+	 * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Anthony.
+	 *
+	 * @default false
+	 */
+	allRecommended?: boolean
 }
 
 export interface OptionsTypeScriptParserOptions {
-  /**
-   * Glob patterns for files that should be type aware.
-   * @default ['**\/*.{ts,tsx}']
-   */
-  filesTypeAware?: string[]
+	/**
+	 * Glob patterns for files that should be type aware.
+	 * @default ['**\/*.{ts,tsx}']
+	 */
+	filesTypeAware?: string[]
 
-  /**
-   * Glob patterns for files that should not be type aware.
-   * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
-   */
-  ignoresTypeAware?: string[]
+	/**
+	 * Glob patterns for files that should not be type aware.
+	 * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+	 */
+	ignoresTypeAware?: string[]
 
-  /**
-   * Additional parser options for TypeScript.
-   */
-  parserOptions?: Partial<ParserOptions>
+	/**
+	 * Additional parser options for TypeScript.
+	 */
+	parserOptions?: Partial<ParserOptions>
 }
 
 export interface OptionsTypeScriptWithTypes {
-  /**
-   * Override type aware rules.
-   */
-  overridesTypeAware?: TypedFlatConfigItem['rules']
+	/**
+	 * Override type aware rules.
+	 */
+	overridesTypeAware?: TypedFlatConfigItem["rules"]
 
-  /**
-   * When this options is provided, type aware rules will be enabled.
-   * @see https://typescript-eslint.io/linting/typed-linting/
-   */
-  tsconfigPath?: string
+	/**
+	 * When this options is provided, type aware rules will be enabled.
+	 * @see https://typescript-eslint.io/linting/typed-linting/
+	 */
+	tsconfigPath?: string
 }
 
 export interface OptionsHasTypeScript {
-  typescript?: boolean
+	typescript?: boolean
 }
 
 export interface OptionsStylistic {
-  stylistic?: boolean | StylisticConfig
+	stylistic?: boolean | StylisticConfig
 }
 
 export interface StylisticConfig
-  extends Pick<StylisticCustomizeOptions, 'indent' | 'jsx' | 'quotes' | 'semi'> {
+	extends Pick<StylisticCustomizeOptions, "indent" | "jsx" | "quotes" | "semi"> {
 }
 
 export interface OptionsOverrides {
-  overrides?: TypedFlatConfigItem['rules']
+	overrides?: TypedFlatConfigItem["rules"]
 }
 
 export interface OptionsProjectType {
-  /**
-   * Type of the project. `lib` will enable more strict rules for libraries.
-   *
-   * @default 'app'
-   */
-  type?: 'app' | 'lib'
+	/**
+	 * Type of the project. `lib` will enable more strict rules for libraries.
+	 *
+	 * @default 'app'
+	 */
+	type?: "app" | "lib"
 }
 
 export interface OptionsRegExp {
-  /**
-   * Override rulelevels
-   */
-  level?: 'error' | 'warn'
+	/**
+	 * Override rulelevels
+	 */
+	level?: "error" | "warn"
 }
 
 export interface OptionsIsInEditor {
-  isInEditor?: boolean
+	isInEditor?: boolean
 }
 
 export interface OptionsUnoCSS extends OptionsOverrides {
-  /**
-   * Enable attributify support.
-   * @default true
-   */
-  attributify?: boolean
-  /**
-   * Enable strict mode by throwing errors about blocklisted classes.
-   * @default false
-   */
-  strict?: boolean
+	/**
+	 * Enable attributify support.
+	 * @default true
+	 */
+	attributify?: boolean
+	/**
+	 * Enable strict mode by throwing errors about blocklisted classes.
+	 * @default false
+	 */
+	strict?: boolean
 }
 
 export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType {
-  /**
-   * Enable ASTRO support.
-   *
-   *
-   * @default auto-detect based on the dependencies
-   */
-  astro?: boolean | OptionsOverrides
+	/**
+	 * Enable ASTRO support.
+	 *
+	 *
+	 * @default auto-detect based on the dependencies
+	 */
+	astro?: boolean | OptionsOverrides
 
-  /**
-   * Enable gitignore support.
-   *
-   * Passing an object to configure the options.
-   *
-   * @see https://github.com/antfu/eslint-config-flat-gitignore
-   * @default true
-   */
-  gitignore?: boolean | FlatGitignoreOptions
+	/**
+	 * Enable gitignore support.
+	 *
+	 * Passing an object to configure the options.
+	 *
+	 * @see https://github.com/antfu/eslint-config-flat-gitignore
+	 * @default true
+	 */
+	gitignore?: boolean | FlatGitignoreOptions
 
-  /**
-   * Control to disable some rules in editors.
-   * @default auto-detect based on the process.env
-   */
-  isInEditor?: boolean
+	/**
+	 * Control to disable some rules in editors.
+	 * @default auto-detect based on the process.env
+	 */
+	isInEditor?: boolean
 
-  /**
-   * Core rules. Can't be disabled.
-   */
-  javascript?: OptionsOverrides
+	/**
+	 * Core rules. Can't be disabled.
+	 */
+	javascript?: OptionsOverrides
 
-  /**
-   * Enable JSONC support.
-   *
-   * @default true
-   */
-  jsonc?: boolean | OptionsOverrides
+	/**
+	 * Enable JSONC support.
+	 *
+	 * @default true
+	 */
+	jsonc?: boolean | OptionsOverrides
 
-  /**
-   * Enable JSX related rules.
-   *
-   * Currently only stylistic rules are included.
-   *
-   * @default true
-   */
-  jsx?: boolean
+	/**
+	 * Enable JSX related rules.
+	 *
+	 * Currently only stylistic rules are included.
+	 *
+	 * @default true
+	 */
+	jsx?: boolean
 
-  /**
-   * Enable react rules.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  react?: boolean | OptionsOverrides
+	/**
+	 * Enable react rules.
+	 *
+	 * @default auto-detect based on the dependencies
+	 */
+	react?: boolean | OptionsOverrides
 
-  /**
-   * Enable regexp rules.
-   *
-   * @see https://ota-meshi.github.io/eslint-plugin-regexp/
-   * @default true
-   */
-  regexp?: boolean | (OptionsRegExp & OptionsOverrides)
+	/**
+	 * Enable regexp rules.
+	 *
+	 * @see https://ota-meshi.github.io/eslint-plugin-regexp/
+	 * @default true
+	 */
+	regexp?: boolean | (OptionsRegExp & OptionsOverrides)
 
-  /**
-   * Enable stylistic rules.
-   *
-   * @see https://eslint.style/
-   * @default true
-   */
-  stylistic?: boolean | (StylisticConfig & OptionsOverrides)
+	/**
+	 * Enable stylistic rules.
+	 *
+	 * @see https://eslint.style/
+	 * @default true
+	 */
+	stylistic?: boolean | (StylisticConfig & OptionsOverrides)
 
-  /**
-   * Enable Tailwind CSS rules.
-   *
-   * @see https://github.com/francoismassart/eslint-plugin-tailwindcss
-   * @default auto-detect based on the dependencies
-   */
-  tailwindcss?: boolean | OptionsOverrides
+	/**
+	 * Enable Tailwind CSS rules.
+	 *
+	 * @see https://github.com/francoismassart/eslint-plugin-tailwindcss
+	 * @default auto-detect based on the dependencies
+	 */
+	tailwindcss?: boolean | OptionsOverrides
 
-  /**
-   * Enable TOML support.
-   *
-   * @default true
-   */
-  toml?: boolean | OptionsOverrides
+	/**
+	 * Enable TOML support.
+	 *
+	 * @default true
+	 */
+	toml?: boolean | OptionsOverrides
 
-  /**
-   * Enable TypeScript support.
-   *
-   * Passing an object to enable TypeScript Language Server support.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  typescript?: boolean | OptionsTypescript
+	/**
+	 * Enable TypeScript support.
+	 *
+	 * Passing an object to enable TypeScript Language Server support.
+	 *
+	 * @default auto-detect based on the dependencies
+	 */
+	typescript?: boolean | OptionsTypescript
 
-  /**
-   * Options for eslint-plugin-unicorn.
-   *
-   * @default true
-   */
-  unicorn?: boolean | OptionsUnicorn
+	/**
+	 * Options for eslint-plugin-unicorn.
+	 *
+	 * @default true
+	 */
+	unicorn?: boolean | OptionsUnicorn
 
-  /**
-   * Enable unocss rules.
-   *
-   * @default auto-detect based on the dependencies
-   */
-  unocss?: boolean | OptionsUnoCSS
+	/**
+	 * Enable unocss rules.
+	 *
+	 * @default auto-detect based on the dependencies
+	 */
+	unocss?: boolean | OptionsUnoCSS
 
-  /**
-   * Enable YAML support.
-   *
-   * @default true
-   */
-  yaml?: boolean | OptionsOverrides
+	/**
+	 * Enable YAML support.
+	 *
+	 * @default true
+	 */
+	yaml?: boolean | OptionsOverrides
 }
