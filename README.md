@@ -13,7 +13,6 @@ All in One ESLint config.
 
 ## Features
 
-- Auto fix for formatting (**without** Prettier)
 - [Auto detect](#auto-detect) your codebase and enable needed rules
 - Out of box level's support `toml`, `yaml`, `json`, `html`
 - Work with **React, Astro**
@@ -24,7 +23,7 @@ All in One ESLint config.
 
 ## Usage
 
-1. Install by your package manager
+Install by your package manager
 
 ```shell
 npm install -D eslint @xats/eslint-config
@@ -42,8 +41,8 @@ yarn add -D eslint @xats/eslint-config
 bun add -D eslint @xats/eslint-config
 ```
 
-2. Create a `eslint.config.js` if your package.json set `"type": "module"`, otherwise create a `eslint.config.mjs`
-
+Create a `eslint.config.js` if your package.json set `"type": "module"`, otherwise create a `eslint.config.mjs`
+  
 ```js
 // eslint.config.js 
 // or eslint.config.mjs
@@ -53,9 +52,8 @@ import { xat } from '@xats/eslint-config'
 export default xat()
 ```
 
-3. Add scripts for `package.json`
+Add scripts for `package.json`
 
-For example:
 ```json
 {
   "scripts": {
@@ -65,10 +63,7 @@ For example:
 }
 ```
 
-4. VS Code - Auto fix on save (Optional)
-
-<details>
-<summary>Copied from antfu</summary>
+VS Code - Auto fix on save (Optional)
 
 ```json
 {
@@ -80,7 +75,6 @@ For example:
   },
   "eslint.rules.customizations": [
     { "rule": "@stylistic/*", "severity": "off", "fixable": true },
-    { "rule": "format/*", "severity": "off", "fixable": true },
     { "rule": "*-indent", "severity": "off", "fixable": true },
     { "rule": "*-spacing", "severity": "off", "fixable": true },
     { "rule": "*-spaces", "severity": "off", "fixable": true },
@@ -104,85 +98,16 @@ For example:
   ]
 }
 ```
-</details>
-
-## All Plugins
-
-See `package.json`'s [dependencies list](https://github.com/Xats-Lab/eslint-config/blob/main/package.json)
 
 ## Auto-detect
 
 This config will look up your `package.json`, and auto enable related config rules
 
-### UI
-
 - Astro: `astro`
 - React: `react`
-
-### Style
-
 - UnoCSS: `unocss`
 - TailwindCSS: `tailwindcss`
-
-### Devtool
-
 - TypeScript: `typescript`
-
-## All Plugins
-
-⚡️: Auto detect
-
-👍🏻: Enabled default
-
-🔧: Default disabled, need turn on manually.
-
-<details>
-
-<summary>
-That's all plugins and its status
-</summary>
-
-### Base - you can **not** disable this configs, but you can still disable individual rule
-
-- [eslint-plugin-n](https://www.npmjs.com/package/eslint-plugin-n)
-- [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
-- [eslint-plugin-import-x]( https://www.npmjs.com/package/eslint-plugin-import-x)
-- [eslint-plugin-unused-imports](https://www.npmjs.com/package/eslint-plugin-unused-imports)
-- [eslint-plugin-perfectionist](https://www.npmjs.com/package/eslint-plugin-perfectionist)
-- [eslint-config-flat-gitignore](https://www.npmjs.com/package/eslint-config-flat-gitignore)
-
-### Astro
-
-- [eslint-plugin-astro](https://www.npmjs.com/package/eslint-plugin-astro) - ⚡️
-
-### React
-
-- [@eslint-react/eslint-plugin](https://npmjs.com/package/@eslint-react/eslint-plugin) - ⚡️
-- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) - ⚡️
-- [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh) - ⚡️
-
-### Style
-
-- [eslint-plugin-tailwindcss](https://www.npmjs.com/package/eslint-plugin-tailwindcss) - ⚡️
-- [@unocss/eslint-plugin](https://www.npmjs.com/package/@unocss/eslint-plugin) - ⚡️
-
-### Devtools
-
-- [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - ⚡️
-
-### Document
-
-- [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc) - 👍🏻 `jsonc`
-- [eslint-plugin-toml](https://www.npmjs.com/package/eslint-plugin-toml) - 👍🏻 `toml`
-- [eslint-plugin-yml](https://www.npmjs.com/package/eslint-plugin-yml) - 👍🏻 `yaml`
-
-### Miscs
-
-- [@stylistic/eslint-plugin](https://www.npmjs.com/package/@stylistic/eslint-plugin) - 👍🏻 `stylistic`
-- [eslint-plugin-regexp](https://www.npmjs.com/package/eslint-plugin-regexp) - 👍🏻 `regexp`
-- [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)  - 👍🏻 `unicorn`
-
-</details>
 
 ## Customization
 
@@ -260,8 +185,6 @@ export default xat(
   },
 )
 ```
-
-Check out the [configs](https://github.com/Xats-Lab/eslint-config/blob/main/src/configs) and [factory](https://github.com/Xats-Lab/eslint-config/blob/main/src/factory.ts) for more details.
 
 By the way, this config is based on `@antfu/eslint-config@3.5.0`, So you can reference it's [Customization section](https://github.com/antfu/eslint-config/tree/v3.5.0#Customization).
 
