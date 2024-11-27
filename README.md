@@ -13,6 +13,7 @@ All in One ESLint config.
 
 ## Features
 
+- *Double quotes, Tab indent, Trailing comma, No semicolon, etc.*
 - [Auto detect](#auto-detect) your codebase and enable needed rules
 - Out of box level's support `toml`, `yaml`, `json`, `html`
 - Work with **React, Astro**
