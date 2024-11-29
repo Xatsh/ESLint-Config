@@ -59,20 +59,6 @@ export async function astro(
 				"astro/sort-attributes": "error",
 				"astro/valid-compile": "error",
 
-				"perfectionist/sort-astro-attributes": [
-					"error",
-					{
-						groups: [
-							"multiline",
-							"shorthand",
-							"astro-shorthand",
-							"unknown",
-						],
-						order: "asc",
-						type: "natural",
-					},
-				],
-
 				...(stylistic
 					? {
 							"@stylistic/indent": [
