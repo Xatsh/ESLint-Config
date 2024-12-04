@@ -59,6 +59,9 @@ export async function astro(
 				"astro/sort-attributes": "error",
 				"astro/valid-compile": "error",
 
+				"no-unused-vars": "off",
+				"perfectionist/sort-jsx-props": "off",
+
 				...(stylistic
 					? {
 							"@stylistic/indent": [
