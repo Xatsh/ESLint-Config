@@ -1,12 +1,19 @@
 import fs from "node:fs/promises"
 
 import { flatConfigsToRulesDTS } from "eslint-typegen/core"
+import { builtinRules } from "eslint/use-at-your-own-risk"
 
-import { astro, html, imports, javascript, jsdoc, jsonc, jsx, node, perfectionist, react, regexp, sortPackageJson, stylistic, tailwindcss, toml, typescript, unicorn, unocss, yaml } from "@/configs"
+import { html, imports, javascript, jsdoc, jsonc, jsx, node, perfectionist, react, regexp, sortPackageJson, stylistic, tailwindcss, toml, typescript, unicorn, yaml } from "@/configs"
 import { combine } from "@/utils"
 
 const configs = await combine(
-	astro(),
+	{
+		plugins: {
+			"": {
+				rules: Object.fromEntries(builtinRules.entries()),
+			},
+		},
+	},
 	imports(),
 	javascript(),
 	jsx(),
@@ -23,7 +30,6 @@ const configs = await combine(
 	regexp(),
 	typescript(),
 	unicorn(),
-	unocss(),
 	yaml(),
 )
 

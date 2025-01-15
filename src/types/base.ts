@@ -41,15 +41,6 @@ export interface OptionsComponentExts {
 	componentExts?: string[]
 }
 
-export interface OptionsUnicorn {
-	/**
-	 * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Anthony.
-	 *
-	 * @default false
-	 */
-	allRecommended?: boolean
-}
-
 export interface OptionsTypeScriptParserOptions {
 	/**
 	 * Glob patterns for files that should be type aware.
@@ -59,7 +50,7 @@ export interface OptionsTypeScriptParserOptions {
 
 	/**
 	 * Glob patterns for files that should not be type aware.
-	 * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+	 * @default []
 	 */
 	ignoresTypeAware?: string[]
 
@@ -118,28 +109,7 @@ export interface OptionsIsInEditor {
 	isInEditor?: boolean
 }
 
-export interface OptionsUnoCSS extends OptionsOverrides {
-	/**
-	 * Enable attributify support.
-	 * @default true
-	 */
-	attributify?: boolean
-	/**
-	 * Enable strict mode by throwing errors about blocklisted classes.
-	 * @default false
-	 */
-	strict?: boolean
-}
-
 export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType {
-	/**
-	 * Enable ASTRO support.
-	 *
-	 *
-	 * @default auto-detect based on the dependencies
-	 */
-	astro?: boolean | OptionsOverrides
-
 	/**
 	 * Enable gitignore support.
 	 *
@@ -229,14 +199,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
 	 *
 	 * @default true
 	 */
-	unicorn?: boolean | OptionsUnicorn
-
-	/**
-	 * Enable unocss rules.
-	 *
-	 * @default auto-detect based on the dependencies
-	 */
-	unocss?: boolean | OptionsUnoCSS
+	unicorn?: boolean
 
 	/**
 	 * Enable YAML support.

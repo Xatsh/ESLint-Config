@@ -9,9 +9,6 @@ export const GLOB_JSONC = "**/*.jsonc"
 export const GLOB_YAML = "**/*.y?(a)ml"
 export const GLOB_TOML = "**/*.toml"
 export const GLOB_HTML = "**/*.html"
-export const GLOB_ASTRO = "**/*.astro"
-export const GLOB_ASTRO_TS = "**/*.astro/*.ts"
-export const GLOB_ASTRO_SCRIPT = "**/*.astro/*.[jt]s"
 export const GLOB_EXCLUDE = [
 	"**/node_modules",
 	"**/dist",

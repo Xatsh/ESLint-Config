@@ -2,7 +2,7 @@ import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsProje
 
 import process from "node:process"
 
-import { GLOB_ASTRO_TS, GLOB_TS, GLOB_TSX } from "@/constants"
+import { GLOB_TS, GLOB_TSX } from "@/constants"
 import { parserTs, pluginTs } from "@/plugins"
 
 export async function typescript(
@@ -23,9 +23,7 @@ export async function typescript(
 	]
 
 	const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
-	const ignoresTypeAware = options.ignoresTypeAware ?? [
-		GLOB_ASTRO_TS,
-	]
+	const ignoresTypeAware = options.ignoresTypeAware ?? []
 	const tsconfigPath = options?.tsconfigPath
 		? options.tsconfigPath
 		: undefined

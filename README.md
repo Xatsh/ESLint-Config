@@ -9,14 +9,14 @@
 
 All in One ESLint config.
 
-![Icons](https://skillicons.dev/icons?i=js,ts,react,astro,tailwind)
+![Icons](https://skillicons.dev/icons?i=js,ts,react,tailwind)
 
 ## Features
 
 - *Double quotes, Tab indent, Trailing comma, No semicolon, etc.*
 - [Auto detect](#auto-detect) your codebase and enable needed rules
 - Out of box level's support `toml`, `yaml`, `json`, `html`
-- Work with **React, Astro**
+- Work with **React, TypeScript, TailwindCSS**
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Respects `.gitignore` by default
@@ -91,6 +91,7 @@ VS Code - Auto fix on save (Optional)
     "typescript",
     "typescriptreact",
     "json",
+    "json5",
     "jsonc",
     "yaml",
     "toml",
@@ -104,9 +105,7 @@ VS Code - Auto fix on save (Optional)
 
 This config will look up your `package.json`, and auto enable related config rules
 
-- Astro: `astro`
 - React: `react`
-- UnoCSS: `unocss`
 - TailwindCSS: `tailwindcss`
 - TypeScript: `typescript`
 
@@ -151,10 +150,8 @@ export default xat({
   
   // You can also disable some autodetected configs
   react: false,
-  astro: false,
   typescript: false,
   tailwind: false,
-  unocss: false,
 
   // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
   ignores: [

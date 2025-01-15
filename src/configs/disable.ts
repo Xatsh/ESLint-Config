@@ -29,7 +29,7 @@ export async function disable(): Promise<TypedFlatConfigItem[]> {
 			},
 		},
 		{
-			files: ["**/*.js", "**/*.cjs"],
+			files: ["**/*.cjs"],
 			name: "xat/disable/cjs",
 			rules: {
 				"@typescript-eslint/no-require-imports": "off",

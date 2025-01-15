@@ -6,7 +6,6 @@ import { FlatConfigComposer } from "eslint-flat-config-utils"
 import { isPackageExists } from "local-pkg"
 
 import {
-	astro,
 	disable,
 	ignore,
 	imports,
@@ -25,7 +24,6 @@ import {
 	toml,
 	typescript,
 	unicorn,
-	unocss,
 	yaml } from "@/configs"
 import { interopDefault, isInEditor } from "@/utils"
 
@@ -54,7 +52,6 @@ export function xat(
 	...userConfigs: Awaitable<FlatConfigComposer<any, any> | Linter.Config[] | TypedFlatConfigItem | TypedFlatConfigItem[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
 	const {
-		astro: enableAstro = isPackageExists("astro"),
 		componentExts = [],
 		gitignore: enableGitignore = true,
 		jsonc: enableJsonc = true,
@@ -65,7 +62,6 @@ export function xat(
 		toml: enableToml = true,
 		typescript: enableTypeScript = isPackageExists("typescript"),
 		unicorn: enableUnicorn = true,
-		unocss: enableUnoCSS = isPackageExists("unocss"),
 		yaml: enableYaml = true,
 	} = options
 
@@ -124,7 +120,7 @@ export function xat(
 	)
 
 	if (enableUnicorn) {
-		configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn))
+		configs.push(unicorn())
 	}
 
 	if (enableJsx) {
@@ -159,22 +155,9 @@ export function xat(
 
 	if (enableReact) {
 		configs.push(react({
+			...typescriptOptions,
 			overrides: getOverrides(options, "react"),
 			tsconfigPath,
-		}))
-	}
-
-	if (enableUnoCSS) {
-		configs.push(unocss({
-			...resolveSubOptions(options, "unocss"),
-			overrides: getOverrides(options, "unocss"),
-		}))
-	}
-
-	if (enableAstro) {
-		configs.push(astro({
-			overrides: getOverrides(options, "astro"),
-			stylistic: stylisticOptions,
 		}))
 	}
 
