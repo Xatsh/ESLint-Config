@@ -74,3 +74,6 @@ dist
 
 # IDE
 .idea
+
+# ESLint Rules
+src/types/modules/eslint.d.ts
