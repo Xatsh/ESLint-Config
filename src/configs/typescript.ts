@@ -1,4 +1,4 @@
-import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsProjectType, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from "@/types"
+import type { OptionsComponentExtensions, OptionsFiles, OptionsOverrides, OptionsProjectType, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from "@/types"
 
 import process from "node:process"
 
@@ -6,10 +6,10 @@ import { GLOB_TS, GLOB_TSX } from "@/constants"
 import { parserTs, pluginTs } from "@/plugins"
 
 export async function typescript(
-	options: OptionsFiles & OptionsOverrides & OptionsProjectType & OptionsComponentExts & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
+	options: OptionsFiles & OptionsOverrides & OptionsProjectType & OptionsComponentExtensions & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
 ): Promise<TypedFlatConfigItem[]> {
 	const {
-		componentExts = [],
+		componentExts: componentExtensions = [],
 		overrides = {},
 		overridesTypeAware = {},
 		parserOptions = {},
@@ -19,14 +19,12 @@ export async function typescript(
 	const files = options.files ?? [
 		GLOB_TS,
 		GLOB_TSX,
-		...componentExts.map(ext => `**/*.${ext}`),
+		...componentExtensions.map(extension => `**/*.${extension}`),
 	]
 
 	const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
 	const ignoresTypeAware = options.ignoresTypeAware ?? []
-	const tsconfigPath = options?.tsconfigPath
-		? options.tsconfigPath
-		: undefined
+	const tsconfigPath = options?.tsconfigPath ?? undefined
 	const isTypeAware = !!tsconfigPath
 
 	const typeAwareRules: TypedFlatConfigItem["rules"] = {
@@ -60,7 +58,7 @@ export async function typescript(
 			languageOptions: {
 				parser: parserTs,
 				parserOptions: {
-					extraFileExtensions: componentExts.map(ext => `.${ext}`),
+					extraFileExtensions: componentExtensions.map(extension => `.${extension}`),
 					sourceType: "module",
 					...typeAware
 						? {

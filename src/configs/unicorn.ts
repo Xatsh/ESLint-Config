@@ -11,6 +11,14 @@ export async function unicorn(): Promise<TypedFlatConfigItem[]> {
 			},
 			rules: {
 				...pluginUnicorn.configs["flat/recommended"].rules,
+				"unicorn/prevent-abbreviations": [
+					"error",
+					{
+						allowList: {
+							generateStaticParams: true,
+						},
+					},
+				],
 			},
 		},
 	]

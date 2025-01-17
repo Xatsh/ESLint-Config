@@ -27,7 +27,7 @@ import {
 	yaml } from "@/configs"
 import { interopDefault, isInEditor } from "@/utils"
 
-const flatConfigProps = [
+const flatConfigProperties = [
 	"name",
 	"languageOptions",
 	"linterOptions",
@@ -52,7 +52,7 @@ export function xat(
 	...userConfigs: Awaitable<FlatConfigComposer<any, any> | Linter.Config[] | TypedFlatConfigItem | TypedFlatConfigItem[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
 	const {
-		componentExts = [],
+		componentExts: componentExtensions = [],
 		gitignore: enableGitignore = true,
 		jsonc: enableJsonc = true,
 		jsx: enableJsx = true,
@@ -66,7 +66,7 @@ export function xat(
 	} = options
 
 	let isEditor = options.isInEditor
-	if (isEditor == null) {
+	if (isEditor === undefined) {
 		isEditor = isInEditor()
 		if (isEditor)
 		// eslint-disable-next-line no-console
@@ -75,9 +75,9 @@ export function xat(
 
 	const stylisticOptions = options.stylistic === false
 		? false
-		: typeof options.stylistic === "object"
-			? options.stylistic
-			: {}
+		: (typeof options.stylistic === "object"
+				? options.stylistic
+				: {})
 
 	if (stylisticOptions && !("jsx" in stylisticOptions))
 		stylisticOptions.jsx = enableJsx
@@ -85,16 +85,16 @@ export function xat(
 	const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
 	if (enableGitignore) {
-		if (typeof enableGitignore !== "boolean") {
+		if (typeof enableGitignore === "boolean") {
 			configs.push(interopDefault(import("eslint-config-flat-gitignore")).then(r => [r({
 				name: "xat/gitignore",
-				...enableGitignore,
+				strict: false,
 			})]))
 		}
 		else {
 			configs.push(interopDefault(import("eslint-config-flat-gitignore")).then(r => [r({
 				name: "xat/gitignore",
-				strict: false,
+				...enableGitignore,
 			})]))
 		}
 	}
@@ -130,7 +130,7 @@ export function xat(
 	if (enableTypeScript) {
 		configs.push(typescript({
 			...typescriptOptions,
-			componentExts,
+			componentExts: componentExtensions,
 			overrides: getOverrides(options, "typescript"),
 			type: options.type,
 		}))
@@ -196,12 +196,12 @@ export function xat(
 
 	// User can optionally pass a flat config item to the first argument
 	// We pick the known keys as ESLint would do schema validation
-	const fusedConfig = flatConfigProps.reduce((acc, key) => {
+	const fusedConfig: TypedFlatConfigItem = {}
+	for (const key of flatConfigProperties) {
 		if (key in options)
-			acc[key] = options[key] as any
-		return acc
-	}, {} as TypedFlatConfigItem)
-	if (Object.keys(fusedConfig).length)
+			fusedConfig[key] = options[key] as any
+	}
+	if (Object.keys(fusedConfig).length > 0)
 		configs.push([fusedConfig])
 
 	let composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()

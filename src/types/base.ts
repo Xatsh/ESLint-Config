@@ -3,12 +3,12 @@ import type { ParserOptions } from "@typescript-eslint/parser"
 import type { Linter } from "eslint"
 import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore"
 
-import type { ConfigNames, RuleOptions } from "@/types/modules/eslint"
+import type { RuleOptions } from "@/types/modules/eslint"
 
 export type Awaitable<T> = Promise<T> | T
 export type Rules = RuleOptions
 
-export type { ConfigNames }
+export type { ConfigNames } from "@/types/modules/eslint"
 
 export type TypedFlatConfigItem = Omit<Linter.Config<Rules & Linter.RulesRecord>, "plugins"> & {
 	// Relax plugins type limitation, as most of the plugins did not have correct type info yet.
@@ -31,7 +31,7 @@ export type OptionsTypescript =
   (OptionsOverrides & OptionsTypeScriptParserOptions)
   | (OptionsOverrides & OptionsTypeScriptWithTypes)
 
-export interface OptionsComponentExts {
+export interface OptionsComponentExtensions {
 	/**
 	 * Additional extensions for components.
 	 *
@@ -109,7 +109,7 @@ export interface OptionsIsInEditor {
 	isInEditor?: boolean
 }
 
-export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType {
+export interface OptionsConfig extends OptionsComponentExtensions, OptionsProjectType {
 	/**
 	 * Enable gitignore support.
 	 *

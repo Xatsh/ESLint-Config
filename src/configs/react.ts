@@ -42,10 +42,10 @@ export async function react(
 		"@eslint-react/no-leaked-conditional-rendering": "warn",
 	}
 
-	const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(i => isPackageExists(i))
-	const isUsingRemix = RemixPackages.some(i => isPackageExists(i))
-	const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i))
-	const isUsingNext = NextJsPackages.some(i => isPackageExists(i))
+	const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(index => isPackageExists(index))
+	const isUsingRemix = RemixPackages.some(index => isPackageExists(index))
+	const isUsingReactRouter = ReactRouterPackages.some(index => isPackageExists(index))
+	const isUsingNext = NextJsPackages.some(index => isPackageExists(index))
 
 	const plugins = pluginReact.configs.all.plugins
 
